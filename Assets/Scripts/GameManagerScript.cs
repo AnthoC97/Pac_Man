@@ -27,7 +27,7 @@ public class GameManagerScript : MonoBehaviour
 		Application.Quit();
 	}
 
-	public void ButtonPlayMenuSelection()
+	public void ButtonMenuSelection()
 	{
 		SceneManager.LoadScene("SelectionMenu");
 	}

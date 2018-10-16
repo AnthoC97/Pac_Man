@@ -388,7 +388,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 848859746}
-        m_MethodName: ButtonPlayMenuSelection
+        m_MethodName: ButtonMenuSelection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -472,9 +472,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 848859744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9f9f91cb1d5084c919a106cbfd9a6c, type: 3}
+  m_Script: {fileID: 11500000, guid: 083ebc2de4ed966478f6a7ebd39b0050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerOne: {fileID: 848859744}
+  WinOne: {fileID: 848859744}
+  LoseOne: {fileID: 848859744}
+  PlayerTwo: {fileID: 848859744}
+  WinTwo: {fileID: 848859744}
+  LoseTwo: {fileID: 848859744}
+  EndMenu: {fileID: 848859744}
+  InGame: 0
 --- !u!1 &1190006995
 GameObject:
   m_ObjectHideFlags: 0

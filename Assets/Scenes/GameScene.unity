@@ -1383,7 +1383,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 256546734}
-  - component: {fileID: 256546735}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -1406,17 +1405,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &256546735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 256546733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9f9f91cb1d5084c919a106cbfd9a6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &256570666
 GameObject:
   m_ObjectHideFlags: 0
@@ -3564,7 +3552,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 256546735}
+      - m_Target: {fileID: 1560977268}
         m_MethodName: ButtonMainMenu
         m_Mode: 1
         m_Arguments:
@@ -6536,10 +6524,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8299c83783d32db469d03bddddce368a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerT: {fileID: 0}
   PlayerO: {fileID: 0}
   WalkSpeed: 0
-  IndJoueur: 0
+  PlayerIndex: 0
 --- !u!1 &1024637199
 GameObject:
   m_ObjectHideFlags: 0
@@ -10711,7 +10698,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 256546735}
+      - m_Target: {fileID: 1560977268}
         m_MethodName: ButtonReplay
         m_Mode: 1
         m_Arguments:
@@ -10955,6 +10942,7 @@ MonoBehaviour:
   PlayerTwo: {fileID: 1014963874}
   WinTwo: {fileID: 1593756708}
   LoseTwo: {fileID: 1837110695}
+  EndMenu: {fileID: 1842367813}
   InGame: 0
 --- !u!4 &1560977269
 Transform:
@@ -11657,10 +11645,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8299c83783d32db469d03bddddce368a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerT: {fileID: 0}
   PlayerO: {fileID: 0}
   WalkSpeed: 0
-  IndJoueur: 0
+  PlayerIndex: 0
 --- !u!1 &1649400398
 GameObject:
   m_ObjectHideFlags: 0
@@ -15583,8 +15570,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 256546735}
-        m_MethodName: ButtonPlayMenuSelection
+      - m_Target: {fileID: 1560977268}
+        m_MethodName: ButtonMenuSelection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
