@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.56452245, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6641,13 +6641,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1014963874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8299c83783d32db469d03bddddce368a, type: 3}
+  m_Script: {fileID: 11500000, guid: a10437c70f597418db81780bdff9b73d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerT: {fileID: 0}
-  PlayerO: {fileID: 0}
-  WalkSpeed: 0
-  IndJoueur: 0
+  PlayerO: {fileID: 1645339245}
+  WalkSpeed: 2
+  PlayerIndex: 1
+  level: {fileID: 1867837699}
 --- !u!1 &1049255889
 GameObject:
   m_ObjectHideFlags: 0
@@ -7890,7 +7890,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1276233274
@@ -10605,13 +10605,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1645339245}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 8, y: 0.5, z: 1}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children: []
   m_Father: {fileID: 1915618479}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!135 &1645339247
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10674,13 +10674,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1645339245}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8299c83783d32db469d03bddddce368a, type: 3}
+  m_Script: {fileID: 11500000, guid: a10437c70f597418db81780bdff9b73d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerT: {fileID: 0}
-  PlayerO: {fileID: 0}
-  WalkSpeed: 0
-  IndJoueur: 0
+  PlayerO: {fileID: 1014963874}
+  WalkSpeed: 2
+  PlayerIndex: 0
+  level: {fileID: 1867837699}
 --- !u!1 &1652492100
 GameObject:
   m_ObjectHideFlags: 0
@@ -12462,164 +12462,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1867837699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 930d95b66b7f292418fd5e0e37cf6fce, type: 3}
+  m_Script: {fileID: 11500000, guid: a7cfcfc4fd7fa48ff97369421eb0e9b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Obstacles:
-  - {fileID: 1617661411}
-  - {fileID: 337905750}
-  - {fileID: 1335628942}
-  - {fileID: 2132318705}
-  - {fileID: 245322912}
-  - {fileID: 1615122797}
-  - {fileID: 191571936}
-  - {fileID: 125336940}
-  - {fileID: 555962964}
-  - {fileID: 823876590}
-  - {fileID: 1139828154}
-  - {fileID: 783287476}
-  - {fileID: 1822151050}
-  - {fileID: 1580822854}
-  - {fileID: 1721856390}
-  - {fileID: 1835397529}
-  - {fileID: 2135538481}
-  - {fileID: 331705529}
-  - {fileID: 2130066959}
-  - {fileID: 339386250}
-  - {fileID: 1232239421}
-  - {fileID: 1828621356}
-  - {fileID: 1003109782}
-  - {fileID: 1855352948}
-  - {fileID: 702645066}
-  - {fileID: 21800788}
-  - {fileID: 730797406}
-  - {fileID: 1703518595}
-  - {fileID: 115772896}
-  - {fileID: 2025774036}
-  - {fileID: 1717053756}
-  - {fileID: 434808628}
-  - {fileID: 886657013}
-  - {fileID: 1930276518}
-  - {fileID: 680196326}
-  - {fileID: 1428099117}
-  - {fileID: 1869941981}
-  - {fileID: 1285746639}
-  - {fileID: 20941537}
-  - {fileID: 1872410976}
-  - {fileID: 620813977}
-  - {fileID: 662525373}
-  - {fileID: 2132946218}
-  - {fileID: 516592469}
-  - {fileID: 1396324524}
-  - {fileID: 1732765714}
-  - {fileID: 145564801}
-  - {fileID: 551402501}
-  - {fileID: 153595336}
-  - {fileID: 1992501453}
-  - {fileID: 2025462876}
-  - {fileID: 2127225637}
-  - {fileID: 400361668}
-  - {fileID: 655703133}
-  - {fileID: 516097697}
-  - {fileID: 1594285852}
-  - {fileID: 2138693686}
-  - {fileID: 1541166691}
-  - {fileID: 1693756958}
-  - {fileID: 338075439}
-  - {fileID: 694270993}
-  - {fileID: 1619780499}
-  - {fileID: 690696503}
-  - {fileID: 1486662863}
-  - {fileID: 1860499700}
-  - {fileID: 190334528}
-  - {fileID: 1837336764}
-  - {fileID: 460699495}
-  - {fileID: 975957570}
-  - {fileID: 1889584144}
-  - {fileID: 682699220}
-  - {fileID: 894567025}
-  - {fileID: 1333983596}
-  - {fileID: 501220315}
-  - {fileID: 306987369}
-  - {fileID: 1067886976}
-  - {fileID: 629074373}
-  - {fileID: 1150797114}
-  - {fileID: 56420554}
-  - {fileID: 1331667963}
-  - {fileID: 523276902}
-  - {fileID: 918896298}
-  - {fileID: 1155746546}
-  - {fileID: 1493751461}
-  - {fileID: 251490108}
-  - {fileID: 711576782}
-  - {fileID: 1469161054}
-  - {fileID: 989951657}
-  - {fileID: 1101404695}
-  - {fileID: 682503976}
-  - {fileID: 1843405703}
-  - {fileID: 2077241764}
-  - {fileID: 975858022}
-  - {fileID: 1008677528}
-  - {fileID: 2130516837}
-  - {fileID: 123264104}
-  - {fileID: 1523293983}
-  - {fileID: 1276233275}
-  - {fileID: 1631785956}
-  - {fileID: 620705319}
-  - {fileID: 2091732027}
-  - {fileID: 1166876248}
-  - {fileID: 733857923}
-  - {fileID: 1987432439}
-  - {fileID: 348502944}
-  - {fileID: 1911809472}
-  - {fileID: 2087992375}
-  - {fileID: 1177849046}
-  - {fileID: 973859614}
-  - {fileID: 1772917964}
-  - {fileID: 1898543720}
-  - {fileID: 42762}
-  - {fileID: 1455406572}
-  - {fileID: 2065176862}
-  - {fileID: 19325365}
-  - {fileID: 1319311693}
-  - {fileID: 294093237}
-  - {fileID: 1407530034}
-  - {fileID: 2077660040}
-  - {fileID: 1857431978}
-  - {fileID: 526102375}
-  - {fileID: 708856704}
-  - {fileID: 904139323}
-  - {fileID: 2115101102}
-  - {fileID: 5685023}
-  - {fileID: 1205537822}
-  - {fileID: 1013905944}
-  - {fileID: 260309352}
-  - {fileID: 1476513134}
-  - {fileID: 1049255890}
-  - {fileID: 56309252}
-  - {fileID: 70941968}
-  - {fileID: 753488022}
-  - {fileID: 382035261}
-  - {fileID: 2140081463}
-  - {fileID: 132506565}
-  - {fileID: 2073567697}
-  - {fileID: 2093132848}
-  - {fileID: 2012343411}
-  - {fileID: 1487180972}
-  - {fileID: 665063209}
-  - {fileID: 834123039}
-  - {fileID: 2118850267}
-  - {fileID: 454129467}
-  - {fileID: 1657560082}
-  - {fileID: 390799107}
-  - {fileID: 1284842848}
-  - {fileID: 33495906}
-  - {fileID: 380402634}
-  Doors:
-  - {fileID: 1438189358}
-  - {fileID: 111059262}
-  - {fileID: 587873491}
-  - {fileID: 1111717642}
+  Obstacles: []
+  Doors: []
   x: 17
   z: 17
 --- !u!4 &1867837701
@@ -12647,7 +12494,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1867837699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 083ebc2de4ed966478f6a7ebd39b0050, type: 3}
+  m_Script: {fileID: 11500000, guid: c9139536a7426404485d95c33b341a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerOne: {fileID: 1645339245}
