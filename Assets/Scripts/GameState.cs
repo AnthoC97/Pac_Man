@@ -77,38 +77,32 @@ public class GameState : MonoBehaviour {
 		       EtatCase[(int) (borderRight + .5), (int) (borderDown + .5)] == 1;
 	}
 
+	/**
+	 * Tries to move a player in a direction, cancelling movement on collision
+	 */
+	private void tryMovingInDirection(GameObject player, Vector3 direction) {
+		Vector3 prevPosition = player.transform.position;
+		player.transform.position += player.transform.rotation * direction * WalkSpeed * Time.deltaTime;
+		if (CollidesWithWalls(player)) {
+			player.transform.position = prevPosition;
+		}
+	}
+
 	// Setter mouvement
 	private void IntentManagement(MovementAction Intent, GameObject Player) {
 		if ((Intent & MovementAction.WantToMoveForward) != 0) {
-			Vector3 prevPosition = Player.transform.position;
-			Player.transform.position += Player.transform.rotation * Vector3.forward * WalkSpeed * Time.deltaTime;
-			if (CollidesWithWalls(Player)) {
-				Player.transform.position = prevPosition;
-			}
+			tryMovingInDirection(Player, Vector3.forward);
 		}
 
 		if ((Intent & MovementAction.WantToMoveBackward) != 0) {
-			Vector3 prevPosition = Player.transform.position;
-			Player.transform.position += Player.transform.rotation * Vector3.back * WalkSpeed * Time.deltaTime;
-			if (CollidesWithWalls(Player)) {
-				Player.transform.position = prevPosition;
-			}
+			tryMovingInDirection(Player, Vector3.back);
 		}
 
 		if ((Intent & MovementAction.WantToMoveLeft) != 0) {
-			Vector3 prevPosition = Player.transform.position;
-			Player.transform.position += Player.transform.rotation * Vector3.left * WalkSpeed * Time.deltaTime;
-			if (CollidesWithWalls(Player)) {
-				Player.transform.position = prevPosition;
-			}
+			tryMovingInDirection(Player, Vector3.left);
 		}
-
 		if ((Intent & MovementAction.WantToMoveRight) != 0) {
-			Vector3 prevPosition = Player.transform.position;
-			Player.transform.position += Player.transform.rotation * Vector3.right * WalkSpeed * Time.deltaTime;
-			if (CollidesWithWalls(Player)) {
-				Player.transform.position = prevPosition;
-			}
+			tryMovingInDirection(Player, Vector3.right);
 		}
 	}
 
