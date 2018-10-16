@@ -24,29 +24,29 @@ public class GameState : MonoBehaviour {
 	[SerializeField] private GameObject PlayerOne;
 	public bool IsKillerOne = false;
 	[SerializeField]private Material MatOne;
-	
+
 	[Header("Player/IA Two")]
 	[SerializeField] private GameObject PlayerTwo;
 	public bool IsKillerTwo = false;
 	[SerializeField]private Material MaTwo;
-	
+
 	[Header("Killer")]
 	[SerializeField]private Material MatKiller;
 	[SerializeField]public float TimeKiller;
 	public float Timetokill;
-	
+
 	[Header("Speed")]
 	[SerializeField] private float WalkSpeed;
 
-	[Header("GumBall")] 
+	[Header("GumBall")]
 	[SerializeField] public GameObject GumBall;
-	
+
 	[Header("Jeu lancé")]
 	public bool InGame = false;
 
 	public MovementAction IntentP1;
 	public MovementAction IntentP2;
-	
+
 	//Random Gumball Position
 	public Vector3 RandGumball()
 	{
@@ -59,9 +59,9 @@ public class GameState : MonoBehaviour {
 		}
 		return new Vector3(X,0.3f,Z);
 	}
-	
+
 	/**
-	 * Returns whether attached to GameObject collides with a wall
+	 * Returns whether passed GameObject collides with a wall
 	 */
 	public bool CollidesWithWalls(GameObject player)
 	{
@@ -70,41 +70,45 @@ public class GameState : MonoBehaviour {
 		float borderUp = player.transform.position.z - player.transform.localScale.z / 2;
 		float borderDown = player.transform.position.z + player.transform.localScale.z / 2;
 
-		UnityEngine.Debug.Log(String.Format("borders: {0}; {1}; {2}; {3}. Position: {4}; {5}.", borderLeft, borderRight, borderUp, borderDown, player.transform.position.x, player.transform.position.z));
-
-		int[,] walls = EtatCase;
-
-		UnityEngine.Debug.Log(String.Format("walls: {0}, {1}, {2}, {3}",
-			walls[(int) (borderLeft + .5), (int) (borderUp + .5)],
-			walls[(int) (borderLeft + .5), (int) (borderDown + .5)],
-			walls[(int) (borderRight + .5), (int) (borderUp + .5)],
-			walls[(int) (borderRight + .5), (int) (borderDown + .5)]));
-
 		// Works because we are axis aligned and player is not wider than walls
-		return walls[(int) (borderLeft + .5), (int) (borderUp + .5)] == 1 ||
-		       walls[(int) (borderLeft + .5), (int) (borderDown + .5)] == 1 ||
-		       walls[(int) (borderRight + .5), (int) (borderUp + .5)] == 1 ||
-		       walls[(int) (borderRight + .5), (int) (borderDown + .5)] == 1;
+		return EtatCase[(int) (borderLeft + .5), (int) (borderUp + .5)] == 1 ||
+		       EtatCase[(int) (borderLeft + .5), (int) (borderDown + .5)] == 1 ||
+		       EtatCase[(int) (borderRight + .5), (int) (borderUp + .5)] == 1 ||
+		       EtatCase[(int) (borderRight + .5), (int) (borderDown + .5)] == 1;
 	}
 
 	// Setter mouvement
-	private void IntentManagement(MovementAction Intent, GameObject Player)
-	{
-		Vector3 prevPosition = Player.transform.position;
+	private void IntentManagement(MovementAction Intent, GameObject Player) {
 		if ((Intent & MovementAction.WantToMoveForward) != 0) {
+			Vector3 prevPosition = Player.transform.position;
 			Player.transform.position += Player.transform.rotation * Vector3.forward * WalkSpeed * Time.deltaTime;
+			if (CollidesWithWalls(Player)) {
+				Player.transform.position = prevPosition;
+			}
 		}
+
 		if ((Intent & MovementAction.WantToMoveBackward) != 0) {
+			Vector3 prevPosition = Player.transform.position;
 			Player.transform.position += Player.transform.rotation * Vector3.back * WalkSpeed * Time.deltaTime;
+			if (CollidesWithWalls(Player)) {
+				Player.transform.position = prevPosition;
+			}
 		}
+
 		if ((Intent & MovementAction.WantToMoveLeft) != 0) {
+			Vector3 prevPosition = Player.transform.position;
 			Player.transform.position += Player.transform.rotation * Vector3.left * WalkSpeed * Time.deltaTime;
+			if (CollidesWithWalls(Player)) {
+				Player.transform.position = prevPosition;
+			}
 		}
+
 		if ((Intent & MovementAction.WantToMoveRight) != 0) {
+			Vector3 prevPosition = Player.transform.position;
 			Player.transform.position += Player.transform.rotation * Vector3.right * WalkSpeed * Time.deltaTime;
-		}
-		if (CollidesWithWalls(Player)) {
-			Player.transform.position = prevPosition;
+			if (CollidesWithWalls(Player)) {
+				Player.transform.position = prevPosition;
+			}
 		}
 	}
 
