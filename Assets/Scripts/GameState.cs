@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/**
+ * Authors : Bastien Perroteau
+ */
 public class GameState : MonoBehaviour {
 
 	[Header("Listes")]
@@ -17,19 +19,42 @@ public class GameState : MonoBehaviour {
 	[Header("Player/IA One")]
 	[SerializeField] private GameObject PlayerOne;
 	public bool IsKillerOne = false;
+	[SerializeField]private Material MatOne;
 	
 	[Header("Player/IA Two")]
 	[SerializeField] private GameObject PlayerTwo;
 	public bool IsKillerTwo = false;
+	[SerializeField]private Material MaTwo;
+	
+	[Header("Killer")]
+	[SerializeField]private Material MatKiller;
+	[SerializeField]public float TimeKiller;
+	public float Timetokill;
 	
 	[Header("Speed")]
 	[SerializeField] private float WalkSpeed;
+
+	[Header("GumBall")] 
+	[SerializeField] public GameObject GumBall;
 	
 	[Header("Jeu lancé")]
 	public bool InGame = false;
 	
 	public MovementAction IntentP1;
 	public MovementAction IntentP2;
+	
+	//Random Gumball Position
+	public Vector3 RandGumball()
+	{
+		int X = Random.Range(0, 18);
+		int Z = Random.Range(0, 18);
+		while (EtatCase[X,Z] != 0)
+		{
+			X = Random.Range(0, 18);
+			Z = Random.Range(0, 18);
+		}
+		return new Vector3(X,0.3f,Z);
+	}
 	
 	// Setter mouvement
 	private void IntentManagement(MovementAction Intent, GameObject Player)
@@ -73,10 +98,44 @@ public class GameState : MonoBehaviour {
 		{
 			EtatCase[(int)cpt.position.x,(int)cpt.position.z] = 2;
 		}
+		//Set Gumball Position
+		GumBall.transform.position = RandGumball();
+	}
+
+	private void Update()
+	{
+		if (Timetokill <= 0)
+		{
+			Timetokill = 0.1f;
+			IsKillerOne = false;
+			IsKillerTwo = false;
+			GumBall.transform.position = RandGumball();
+			GumBall.SetActive(true);
+		}
+		if (IsKillerOne)
+		{
+			GumBall.transform.position = new Vector3(25,-25,25);
+			GumBall.SetActive(false);
+			Timetokill -= Time.deltaTime;
+			PlayerOne.GetComponent<Renderer>().material = MatKiller;
+		}
+		else if (IsKillerTwo)
+		{
+			GumBall.transform.position = new Vector3(25,-25,25);
+			GumBall.SetActive(false);
+			Timetokill -= Time.deltaTime;
+			PlayerTwo.GetComponent<Renderer>().material = MatKiller;
+		}
+		else
+		{
+			PlayerOne.GetComponent<Renderer>().material = MatOne;
+			PlayerTwo.GetComponent<Renderer>().material = MaTwo;
+		}
 	}
 
 	void FixedUpdate()
 	{
+		GumBall.transform.Rotate(new Vector3(0,25,0) * Time.deltaTime);
 		//Test si jeu lancé
 		if (InGame)
 		{
