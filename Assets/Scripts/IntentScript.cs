@@ -1,4 +1,8 @@
-﻿using System;
+﻿/**
+ * Authors: Bastien PERROTEAU
+ */
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,35 +31,6 @@ public class IntentScript : MonoBehaviour
 	private MovementAction intent;
 
 	public bool IsKiller = false;
-	
-	/**
- * Returns whether attached to GameObject collides with a wall
- */
-	public bool CollidesWithWalls()
-	{
-		float borderLeft = transform.position.x - transform.localScale.x / 2;
-		float borderRight = transform.position.x + transform.localScale.x / 2;
-		float borderUp = transform.position.z - transform.localScale.z / 2;
-		float borderDown = transform.position.z + transform.localScale.z / 2;
-
-		UnityEngine.Debug.Log(String.Format("borders: {0}; {1}; {2}; {3}. ", borderLeft, borderRight, borderUp, borderDown));
-
-		int[,] walls = GameState.GetComponent<GameState>().EtatCase;
-
-		UnityEngine.Debug.Log(String.Format("walls: {0}, {1}, {2}, {3}",
-			walls[(int) borderLeft, (int) borderUp],
-			walls[(int) borderLeft, (int) borderDown],
-			walls[(int) borderRight, (int) borderUp],
-			walls[(int) borderRight, (int) borderDown]));
-
-		UnityEngine.Debug.Log(String.Format("walls: {0}", walls));
-
-		// Works because we are axis aligned and player is not wider than walls
-		return walls[(int) borderLeft, (int) borderUp] == 1 ||
-		       walls[(int) borderLeft, (int) borderDown] == 1 ||
-		       walls[(int) borderRight, (int) borderUp] == 1 ||
-		       walls[(int) borderRight, (int) borderDown] == 1;
-	}
 
 	void Start () {
 		//Debug.Assert(level != null, "level != null");

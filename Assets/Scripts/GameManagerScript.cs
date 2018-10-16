@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/**
+ * Authors: Bastien PERROTEAU
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,7 +11,7 @@ public class GameManagerScript : MonoBehaviour
 {
 	[Header("GameState")]
 	[SerializeField] private GameObject GameState;
-	
+
 	[Header("Player/IA One")]
 	[SerializeField] private GameObject PlayerOne;
 	[SerializeField] private GameObject WinOne;
@@ -19,10 +23,10 @@ public class GameManagerScript : MonoBehaviour
 	[SerializeField] private GameObject WinTwo;
 	[SerializeField] private GameObject LoseTwo;
 	private Vector3 P2Init;
-	
+
 	[Header("Menu en jeu")]
 	[SerializeField] private GameObject EndMenu;
-	
+
 	// Button Management (Menu / jeu / rejouer)
 	public void ButtonQuit()
 	{
@@ -63,7 +67,7 @@ public class GameManagerScript : MonoBehaviour
 		P1Init = PlayerOne.transform.position;
 		P2Init = PlayerTwo.transform.position;
 	}
-	
+
 	void Update () {
 		//Test si jeu lancé
 		if (GameState.GetComponent<GameState>().InGame)
