@@ -58,7 +58,6 @@
     <Compile Include="Assets\Scripts\GameManagerScript.cs" />
     <Compile Include="Assets\Scripts\GameState.cs" />
     <Compile Include="Assets\Scripts\IntentScript.cs" />
-    <Compile Include="Assets\Scripts\MappingCounter.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/0_MyProject/Pacman/Pac_Man/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

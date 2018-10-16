@@ -28,12 +28,13 @@ public class GameState : MonoBehaviour {
 	[Header("Jeu lancé")]
 	public bool InGame = false;
 	
-	private MovementAction IntentP1;
-	private MovementAction IntentP2;
+	public MovementAction IntentP1;
+	public MovementAction IntentP2;
 	
 	// Setter mouvement
 	private void IntentManagement(MovementAction Intent, GameObject Player)
 	{
+		Vector3 prevPosition = transform.position;
 		if ((Intent & MovementAction.WantToMoveForward) != 0) {
 			Player.transform.position += Player.transform.rotation * Vector3.forward * WalkSpeed * Time.deltaTime;
 		}
@@ -46,7 +47,9 @@ public class GameState : MonoBehaviour {
 		if ((Intent & MovementAction.WantToMoveRight) != 0) {
 			Player.transform.position += Player.transform.rotation * Vector3.right * WalkSpeed * Time.deltaTime;
 		}
-
+		if (Player.GetComponent<IntentScript>().CollidesWithWalls()) {
+			transform.position = prevPosition;
+		}
 		Intent = 0;
 	}
 	
