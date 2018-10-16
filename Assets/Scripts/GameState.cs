@@ -72,7 +72,7 @@ public class GameState : MonoBehaviour {
 			EtatCase[(int)cpt.position.x,(int)cpt.position.z] = 2;
 		}
 	}
-	
+
 	void FixedUpdate()
 	{
 		//Test si jeu lancé
