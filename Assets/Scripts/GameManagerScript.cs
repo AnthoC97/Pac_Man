@@ -6,9 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-/**
- * Authors : Bastien Perroteau
- */
+
 public class GameManagerScript : MonoBehaviour
 {
 	[Header("GameState")]

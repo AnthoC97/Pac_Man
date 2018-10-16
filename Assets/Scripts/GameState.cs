@@ -6,9 +6,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/**
- * Authors : Bastien Perroteau
- */
+
+
 public class GameState : MonoBehaviour {
 
 	[Header("Listes")]
@@ -51,12 +50,12 @@ public class GameState : MonoBehaviour {
 	//Random Gumball Position
 	public Vector3 RandGumball()
 	{
-		int X = Random.Range(0, 18);
-		int Z = Random.Range(0, 18);
+		int X = UnityEngine.Random.Range(0, 18);
+		int Z = UnityEngine.Random.Range(0, 18);
 		while (EtatCase[X,Z] != 0)
 		{
-			X = Random.Range(0, 18);
-			Z = Random.Range(0, 18);
+			X = UnityEngine.Random.Range(0, 18);
+			Z = UnityEngine.Random.Range(0, 18);
 		}
 		return new Vector3(X,0.3f,Z);
 	}
