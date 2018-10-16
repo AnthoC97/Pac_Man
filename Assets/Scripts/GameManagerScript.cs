@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour
 {
-
+	[Header("GameState")]
+	[SerializeField] private GameObject GameState;
 	[Header("Player/IA One")]
 	[SerializeField] private GameObject PlayerOne;
 	[SerializeField] private GameObject WinOne;
@@ -17,34 +18,38 @@ public class GameManagerScript : MonoBehaviour
 	[SerializeField] private GameObject WinTwo;
 	[SerializeField] private GameObject LoseTwo;
 	private Vector3 P2Init;
-
-	[SerializeField] private GameObject EndMenu;
-
-	public bool InGame = false;
 	
+	[Header("Speed")]
+	[SerializeField] private float WalkSpeed;
+	
+	[Header("Menu en jeu")]
+	[SerializeField] private GameObject EndMenu;
+	
+	// Button Management (Menu / jeu / rejouer)
 	public void ButtonQuit()
 	{
 		Application.Quit();
 	}
-
 	public void ButtonMenuSelection()
 	{
 		SceneManager.LoadScene("SelectionMenu");
 	}
-
 	public void ButtonMainMenu()
 	{
 		SceneManager.LoadScene("MainMenu");
 	}
-
 	public void ButtonReplay()
 	{
 		PlayerOne.transform.position = P1Init;
 		PlayerTwo.transform.position = P1Init;
+		GameState.GetComponent<GameState>().IsKillerOne = false;
+		GameState.GetComponent<GameState>().IsKillerTwo = false;
 		// A voir Inititaliser position gum en random
-		// bool les joueur à false
-		// set position joueur
+		EndMenu.SetActive(false);
+		GameState.GetComponent<GameState>().InGame = true;
 	}
+	
+	// Initialisation position Player One et Two
 	void Start ()
 	{
 		P1Init = PlayerOne.transform.position;
@@ -52,7 +57,8 @@ public class GameManagerScript : MonoBehaviour
 	}
 	
 	void Update () {
-		if (InGame)
+		//Test si jeu lancé
+		if (GameState.GetComponent<GameState>().InGame)
 		{
 			if (PlayerOne.transform.position.x < PlayerTwo.transform.position.x + PlayerTwo.transform.localScale.x
 			    && PlayerOne.transform.position.x > PlayerTwo.transform.position.x - PlayerTwo.transform.localScale.x)
@@ -60,22 +66,20 @@ public class GameManagerScript : MonoBehaviour
 				if (PlayerOne.transform.position.z < PlayerTwo.transform.position.z + PlayerTwo.transform.localScale.z
 				    && PlayerOne.transform.position.z > PlayerTwo.transform.position.z - PlayerTwo.transform.localScale.z)
 				{
-					/*
-					if (PlayerOne.GetComponent<IntentScript>().IsKiller)
+					if (GameState.GetComponent<GameState>().IsKillerOne)
 					{
-						InGame = false;
+						GameState.GetComponent<GameState>().InGame = false;
 						WinOne.SetActive(true);
 						LoseTwo.SetActive(true);
 						EndMenu.SetActive(true);
 					}
-					else if(PlayerTwo.GetComponent<IntentScript>().IsKiller)
+					else if(GameState.GetComponent<GameState>().IsKillerTwo)
 					{
-						InGame = false;
+						GameState.GetComponent<GameState>().InGame = false;
 						WinTwo.SetActive(true);
 						LoseOne.SetActive(true);
 						EndMenu.SetActive(true);
 					}
-					*/
 				}
 			}
 		}
