@@ -7,13 +7,13 @@ public class MappingCounter : MonoBehaviour
 	[Header("Listes")]
 	[SerializeField] private List<Transform> Obstacles;
 	[SerializeField] private List<Transform> Doors;
-	
+
 	[Header("Taille Map")]
 	[SerializeField] private int x;
 	[SerializeField] private int z;
-	
-	private int[,] EtatCase;
-	
+
+	public int[,] EtatCase;
+
 	void Start ()
 	{
 		//Initialisation du statut à 0 (passage possible)
@@ -36,8 +36,8 @@ public class MappingCounter : MonoBehaviour
 			EtatCase[(int)cpt.position.x,(int)cpt.position.z] = 2;
 		}
 	}
-	
+
 	void Update () {
-		
+
 	}
 }

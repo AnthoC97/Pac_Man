@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Debug = System.Diagnostics.Debug;
 
 public enum MovementAction
 {
@@ -26,8 +28,15 @@ public class IntentScript : MonoBehaviour
 
 	private bool IsKiller = false;
 
-	void Start () {
+	[Header("Mapping")]
+	[SerializeField] private GameObject level;
 
+	//private int[,] walls;
+
+	void Start () {
+		//Debug.Assert(level != null, "level != null");
+		//walls = level.GetComponent<MappingCounter>().EtatCase;
+		//Debug.Assert(walls != null, "walls != null");
 	}
 
 	void Update () {
@@ -60,8 +69,9 @@ public class IntentScript : MonoBehaviour
 		}
 	}
 
-	private void FixedUpdate()
-	{
+	private void FixedUpdate() {
+		Vector3 prevPosition = transform.position;
+
 		if ((intent & MovementAction.WantToMoveForward) != 0) {
 			transform.position += transform.rotation * Vector3.forward * WalkSpeed * Time.deltaTime;
 		}
@@ -75,6 +85,39 @@ public class IntentScript : MonoBehaviour
 			transform.position += transform.rotation * Vector3.right * WalkSpeed * Time.deltaTime;
 		}
 
+		if (CollidesWithWalls()) {
+			transform.position = prevPosition;
+		}
+
 		intent = 0;
+	}
+
+	/**
+	 * Returns whether attached to GameObject collides with a wall
+	 */
+	private bool CollidesWithWalls()
+	{
+		float borderLeft = transform.position.x - transform.localScale.x / 2;
+		float borderRight = transform.position.x + transform.localScale.x / 2;
+		float borderUp = transform.position.z - transform.localScale.z / 2;
+		float borderDown = transform.position.z + transform.localScale.z / 2;
+
+		UnityEngine.Debug.Log(String.Format("borders: {0}; {1}; {2}; {3}. ", borderLeft, borderRight, borderUp, borderDown));
+
+		int[,] walls = level.GetComponent<MappingCounter>().EtatCase;
+
+		UnityEngine.Debug.Log(String.Format("walls: {0}, {1}, {2}, {3}",
+			walls[(int) borderLeft, (int) borderUp],
+		    walls[(int) borderLeft, (int) borderDown],
+		    walls[(int) borderRight, (int) borderUp],
+		    walls[(int) borderRight, (int) borderDown]));
+
+		UnityEngine.Debug.Log(String.Format("walls: {0}", walls));
+
+		// Works because we are axis aligned and player is not wider than walls
+		return walls[(int) borderLeft, (int) borderUp] == 1 ||
+		       walls[(int) borderLeft, (int) borderDown] == 1 ||
+		       walls[(int) borderRight, (int) borderUp] == 1 ||
+		       walls[(int) borderRight, (int) borderDown] == 1;
 	}
 }
