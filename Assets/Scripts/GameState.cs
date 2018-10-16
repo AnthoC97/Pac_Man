@@ -63,7 +63,7 @@ public class GameState : MonoBehaviour {
 	/**
 	 * Returns whether passed GameObject collides with a wall
 	 */
-	public bool CollidesWithWalls(GameObject player)
+	private bool CollidesWithWalls(GameObject player)
 	{
 		float borderLeft = player.transform.position.x - player.transform.localScale.x / 2;
 		float borderRight = player.transform.position.x + player.transform.localScale.x / 2;
