@@ -7,12 +7,13 @@ public class MappingCounter : MonoBehaviour
 	[Header("Listes")]
 	[SerializeField] private List<Transform> Obstacles;
 	[SerializeField] private List<Transform> Doors;
-	private int[,] EtatCase;
+	
 	[Header("Taille Map")]
 	[SerializeField] private int x;
 	[SerializeField] private int z;
 	
-	// Use this for initialization
+	private int[,] EtatCase;
+	
 	void Start ()
 	{
 		//Initialisation du statut à 0 (passage possible)
@@ -36,7 +37,6 @@ public class MappingCounter : MonoBehaviour
 		}
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		
 	}

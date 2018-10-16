@@ -6558,6 +6558,7 @@ GameObject:
   - component: {fileID: 1014963878}
   - component: {fileID: 1014963877}
   - component: {fileID: 1014963876}
+  - component: {fileID: 1014963879}
   m_Layer: 0
   m_Name: P2
   m_TagString: Untagged
@@ -6573,7 +6574,7 @@ Transform:
   m_GameObject: {fileID: 1014963874}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 7, y: 0.5, z: 14}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children: []
   m_Father: {fileID: 1915618479}
   m_RootOrder: 1
@@ -6632,6 +6633,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1014963874}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1014963879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1014963874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8299c83783d32db469d03bddddce368a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerT: {fileID: 0}
+  PlayerO: {fileID: 0}
+  WalkSpeed: 0
+  IndJoueur: 0
 --- !u!1 &1049255889
 GameObject:
   m_ObjectHideFlags: 0
@@ -10575,6 +10591,7 @@ GameObject:
   - component: {fileID: 1645339249}
   - component: {fileID: 1645339248}
   - component: {fileID: 1645339247}
+  - component: {fileID: 1645339250}
   m_Layer: 0
   m_Name: P1
   m_TagString: Untagged
@@ -10590,7 +10607,7 @@ Transform:
   m_GameObject: {fileID: 1645339245}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 7, y: 0.5, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children: []
   m_Father: {fileID: 1915618479}
   m_RootOrder: 0
@@ -10649,6 +10666,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1645339245}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1645339250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1645339245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8299c83783d32db469d03bddddce368a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerT: {fileID: 0}
+  PlayerO: {fileID: 0}
+  WalkSpeed: 0
+  IndJoueur: 0
 --- !u!1 &1652492100
 GameObject:
   m_ObjectHideFlags: 0
@@ -11982,7 +12014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1842367814
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12413,6 +12445,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1867837701}
+  - component: {fileID: 1867837702}
   - component: {fileID: 1867837700}
   m_Layer: 0
   m_Name: LevelDesign
@@ -12453,6 +12486,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1867837702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1867837699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083ebc2de4ed966478f6a7ebd39b0050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerOne: {fileID: 1645339245}
+  PlayerTwo: {fileID: 1014963874}
 --- !u!1 &1869941980
 GameObject:
   m_ObjectHideFlags: 0

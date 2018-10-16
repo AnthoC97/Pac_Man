@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[Flags]
+
 public enum MouvementAction
 {
 	WantToMoveForward = 1,
@@ -12,18 +12,28 @@ public enum MouvementAction
 public class IntentScript : MonoBehaviour
 {
 
+	
+	[Header("PlayerCharacter")]
 	[SerializeField] private Transform PlayerT;
 
+	[Header("Opposite Character")] 
+	[SerializeField] private Transform PlayerO;
+	private bool OppositeKiller = false;
+	
+	[Header("Speed")]
 	[SerializeField] private float WalkSpeed;
-	public int IndJoueur;
+	
+	[Header("Indice de contrôle")]
+	public int IndJoueur = 0;
 
 	private MouvementAction intent;
-	// Use this for initialization
+
+	private bool IsKiller = false;
+
 	void Start () {
 		
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		if (IndJoueur == 0)
 		{
