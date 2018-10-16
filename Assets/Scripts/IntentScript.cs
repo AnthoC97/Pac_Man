@@ -102,5 +102,6 @@ public class IntentScript : MonoBehaviour
 		{
 			GameState.GetComponent<GameState>().IntentP2 = intent;
 		}
+		intent = 0;
 	}
 }

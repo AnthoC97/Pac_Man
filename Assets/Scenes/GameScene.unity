@@ -574,7 +574,6 @@ GameObject:
   - component: {fileID: 76165407}
   - component: {fileID: 76165406}
   - component: {fileID: 76165405}
-  - component: {fileID: 76165404}
   m_Layer: 0
   m_Name: PlayerTwoEx
   m_TagString: Untagged
@@ -595,21 +594,6 @@ Transform:
   m_Father: {fileID: 1842367814}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &76165404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 76165402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8299c83783d32db469d03bddddce368a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameState: {fileID: 0}
-  IndPlayerOT: 1
-  PlayerIndex: 0
-  IsKiller: 0
 --- !u!135 &76165405
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6664,13 +6648,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1014963874}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 8, y: 0.5, z: 15}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children: []
   m_Father: {fileID: 1915618479}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!135 &1014963876
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9027,7 +9011,6 @@ GameObject:
   - component: {fileID: 1294518193}
   - component: {fileID: 1294518192}
   - component: {fileID: 1294518191}
-  - component: {fileID: 1294518190}
   m_Layer: 0
   m_Name: PlayerOneEx
   m_TagString: Untagged
@@ -9048,21 +9031,6 @@ Transform:
   m_Father: {fileID: 1842367814}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &1294518190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1294518188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8299c83783d32db469d03bddddce368a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameState: {fileID: 0}
-  IndPlayerOT: 1
-  PlayerIndex: 0
-  IsKiller: 0
 --- !u!135 &1294518191
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -11969,13 +11937,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1645339245}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 8, y: 0.5, z: 1}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children: []
   m_Father: {fileID: 1915618479}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!135 &1645339247
 SphereCollider:
   m_ObjectHideFlags: 0

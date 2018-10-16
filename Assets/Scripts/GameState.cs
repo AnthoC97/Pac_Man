@@ -50,7 +50,6 @@ public class GameState : MonoBehaviour {
 		if (Player.GetComponent<IntentScript>().CollidesWithWalls()) {
 			transform.position = prevPosition;
 		}
-		Intent = 0;
 	}
 	
 	void Start ()
@@ -84,5 +83,8 @@ public class GameState : MonoBehaviour {
 			IntentManagement(IntentP1,PlayerOne);
 			IntentManagement(IntentP2,PlayerTwo);
 		}
+
+		IntentP1 = 0;
+		IntentP2 = 0;
 	}
 }
