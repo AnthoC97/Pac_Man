@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ButtonScript : MonoBehaviour {
-
+	
 	public void ButtonQuit()
 	{
 		Application.Quit();
