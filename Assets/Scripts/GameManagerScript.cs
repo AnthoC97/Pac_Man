@@ -62,7 +62,7 @@ public class GameManagerScript : MonoBehaviour
 	{
 		return Mathf.Sqrt( Mathf.Pow(T1.position.x - T2.position.x,2) + Mathf.Pow(T1.position.z - T2.position.z,2));
 	}
-	
+
 	// Initialisation position Player One et Two
 	void Start ()
 	{
@@ -75,7 +75,7 @@ public class GameManagerScript : MonoBehaviour
 		if (GameState.GetComponent<GameState>().InGame)
 		{
 			//Test contact entre sphère
-			if (DistanceCount(PlayerOne.transform, PlayerTwo.transform) <= PlayerTwo.transform.localScale.x*1.9)
+			if (DistanceCount(PlayerOne.transform, PlayerTwo.transform) <= PlayerTwo.transform.localScale.x)
 			{
 				if (GameState.GetComponent<GameState>().IsKillerOne)
 				{
