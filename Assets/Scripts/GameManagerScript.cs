@@ -42,6 +42,14 @@ public class GameManagerScript : MonoBehaviour
 		SceneManager.LoadScene("MainMenu");
 	}
 
+	public void LoadGameScene(int ind)
+	{
+		if (ind == 0)
+		{
+			SceneManager.LoadScene("GameScene");
+		}
+	}
+
 	public void ButtonPlay()
 	{
 		GameState.GetComponent<GameState>().InGame = true;

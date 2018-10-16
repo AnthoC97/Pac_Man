@@ -443,6 +443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 848859745}
   - component: {fileID: 848859746}
+  - component: {fileID: 848859747}
   m_Layer: 0
   m_Name: GUI
   m_TagString: Untagged
@@ -475,6 +476,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 083ebc2de4ed966478f6a7ebd39b0050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameState: {fileID: 848859744}
+  GS: {fileID: 848859747}
   PlayerOne: {fileID: 848859744}
   WinOne: {fileID: 848859744}
   LoseOne: {fileID: 848859744}
@@ -482,7 +485,35 @@ MonoBehaviour:
   WinTwo: {fileID: 848859744}
   LoseTwo: {fileID: 848859744}
   EndMenu: {fileID: 848859744}
+--- !u!114 &848859747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 848859744}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 234bb2ad29b3e8f44a3ba014c8741567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Obstacles: []
+  Doors: []
+  x: 0
+  z: 0
+  PlayerOne: {fileID: 0}
+  IsKillerOne: 0
+  MatOne: {fileID: 0}
+  PlayerTwo: {fileID: 0}
+  IsKillerTwo: 0
+  MaTwo: {fileID: 0}
+  MatKiller: {fileID: 0}
+  TimeKiller: 0
+  Timetokill: 0
+  WalkSpeed: 0
+  GumBall: {fileID: 0}
   InGame: 0
+  IntentP1: 0
+  IntentP2: 0
 --- !u!1 &1190006995
 GameObject:
   m_ObjectHideFlags: 0
