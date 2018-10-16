@@ -12,7 +12,7 @@ public class GameState : MonoBehaviour {
 
 	[Header("Listes")]
 	[SerializeField] private List<Transform> Obstacles;
-	[SerializeField] private List<Transform> Doors;
+	[SerializeField] public List<Transform> Doors;
 
 	[Header("Taille Map")]
 	[SerializeField] private int x;
@@ -21,12 +21,12 @@ public class GameState : MonoBehaviour {
 	public int[,] EtatCase;
 
 	[Header("Player/IA One")]
-	[SerializeField] private GameObject PlayerOne;
+	[SerializeField] public GameObject PlayerOne;
 	public bool IsKillerOne = false;
 	[SerializeField]private Material MatOne;
 
 	[Header("Player/IA Two")]
-	[SerializeField] private GameObject PlayerTwo;
+	[SerializeField] public GameObject PlayerTwo;
 	public bool IsKillerTwo = false;
 	[SerializeField]private Material MaTwo;
 
@@ -50,12 +50,12 @@ public class GameState : MonoBehaviour {
 	//Random Gumball Position
 	public Vector3 RandGumball()
 	{
-		int X = UnityEngine.Random.Range(0, 18);
-		int Z = UnityEngine.Random.Range(0, 18);
+		int X = UnityEngine.Random.Range(0, x+1);
+		int Z = UnityEngine.Random.Range(0, z+1);
 		while (EtatCase[X,Z] != 0)
 		{
-			X = UnityEngine.Random.Range(0, 18);
-			Z = UnityEngine.Random.Range(0, 18);
+			X = UnityEngine.Random.Range(0, x+1);
+			Z = UnityEngine.Random.Range(0, z+1);
 		}
 		return new Vector3(X,0.3f,Z);
 	}

@@ -11133,6 +11133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameState: {fileID: 1560977266}
+  GS: {fileID: 1560977270}
   PlayerOne: {fileID: 1645339245}
   WinOne: {fileID: 1285055054}
   LoseOne: {fileID: 1996866882}
@@ -11327,7 +11328,7 @@ MonoBehaviour:
   MaTwo: {fileID: 2100000, guid: 8e37c3896831921478c2dbdaff0a103c, type: 2}
   MatKiller: {fileID: 2100000, guid: 2a0dad631c7950f49a892d71e33b44ee, type: 2}
   TimeKiller: 10
-  Timetokill: 0
+  Timetokill: 0.1
   WalkSpeed: 2
   GumBall: {fileID: 1822133970}
   InGame: 1

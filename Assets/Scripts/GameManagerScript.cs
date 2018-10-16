@@ -11,6 +11,7 @@ public class GameManagerScript : MonoBehaviour
 {
 	[Header("GameState")]
 	[SerializeField] private GameObject GameState;
+	[SerializeField] private GameState GS;
 
 	[Header("Player/IA One")]
 	[SerializeField] private GameObject PlayerOne;
@@ -62,6 +63,26 @@ public class GameManagerScript : MonoBehaviour
 	{
 		return Mathf.Sqrt( Mathf.Pow(T1.position.x - T2.position.x,2) + Mathf.Pow(T1.position.z - T2.position.z,2));
 	}
+	//Passage de Portail
+	private void Portal(GameObject Player, Transform North, Transform South, Transform East, Transform West)
+	{
+		if (West.position.z <= Player.transform.position.z + (Player.transform.localScale.z / 4))
+		{
+			Player.transform.position = new Vector3(Player.transform.position.x,Player.transform.position.y,East.position.z + (Player.transform.localScale.z/2));
+		}
+		else if (East.position.z >= Player.transform.position.z - (Player.transform.localScale.z / 4))
+		{
+			Player.transform.position = new Vector3(Player.transform.position.x,Player.transform.position.y,West.position.z - (Player.transform.localScale.z/2));
+		}
+		else if (South.position.x <= Player.transform.position.x + (Player.transform.localScale.x / 4))
+		{
+			Player.transform.position = new Vector3(North.transform.position.x + (Player.transform.localScale.x/2),Player.transform.position.y,Player.transform.position.z);
+		}
+		else if (North.position.x >= Player.transform.position.x - (Player.transform.localScale.x / 4))
+		{
+			Player.transform.position = new Vector3(South.transform.position.x - (Player.transform.localScale.x/2),Player.transform.position.y,Player.transform.position.z);
+		}
+	}
 
 	// Initialisation position Player One et Two
 	void Start ()
@@ -105,6 +126,9 @@ public class GameManagerScript : MonoBehaviour
 				GameState.GetComponent<GameState>().IsKillerTwo = true;
 				GameState.GetComponent<GameState>().Timetokill = GameState.GetComponent<GameState>().TimeKiller;
 			}
+			//Portail
+			Portal(GS.PlayerOne, GS.Doors[0], GS.Doors[1], GS.Doors[2], GS.Doors[3]);
+			Portal(GS.PlayerTwo, GS.Doors[0], GS.Doors[1], GS.Doors[2], GS.Doors[3]);
 		}
 	}
 }
