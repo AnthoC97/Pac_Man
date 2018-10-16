@@ -606,9 +606,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8299c83783d32db469d03bddddce368a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerO: {fileID: 0}
-  WalkSpeed: 0
+  GameState: {fileID: 0}
+  IndPlayerOT: 1
   PlayerIndex: 0
+  IsKiller: 0
 --- !u!135 &76165405
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6735,9 +6736,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8299c83783d32db469d03bddddce368a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerO: {fileID: 0}
-  WalkSpeed: 0
-  PlayerIndex: 0
+  GameState: {fileID: 1560977266}
+  IndPlayerOT: 2
+  PlayerIndex: 1
+  IsKiller: 0
 --- !u!1 &1024637199
 GameObject:
   m_ObjectHideFlags: 0
@@ -9057,9 +9059,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8299c83783d32db469d03bddddce368a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerO: {fileID: 0}
-  WalkSpeed: 0
+  GameState: {fileID: 0}
+  IndPlayerOT: 1
   PlayerIndex: 0
+  IsKiller: 0
 --- !u!135 &1294518191
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -11168,7 +11171,6 @@ MonoBehaviour:
   PlayerTwo: {fileID: 1014963874}
   WinTwo: {fileID: 1593756708}
   LoseTwo: {fileID: 1837110695}
-  WalkSpeed: 0
   EndMenu: {fileID: 783016270}
 --- !u!4 &1560977269
 Transform:
@@ -11199,16 +11201,163 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234bb2ad29b3e8f44a3ba014c8741567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Obstacles: []
-  Doors: []
-  x: 0
-  z: 0
-  PlayerOne: {fileID: 0}
+  Obstacles:
+  - {fileID: 2034846657}
+  - {fileID: 1250536973}
+  - {fileID: 2006095969}
+  - {fileID: 731312572}
+  - {fileID: 1863028483}
+  - {fileID: 768745089}
+  - {fileID: 448318478}
+  - {fileID: 831433443}
+  - {fileID: 1403135784}
+  - {fileID: 1782299863}
+  - {fileID: 674260388}
+  - {fileID: 1241844089}
+  - {fileID: 403977857}
+  - {fileID: 1466086775}
+  - {fileID: 1426520618}
+  - {fileID: 150685462}
+  - {fileID: 750547131}
+  - {fileID: 1090016205}
+  - {fileID: 1980064960}
+  - {fileID: 1152125434}
+  - {fileID: 1915995003}
+  - {fileID: 2107206226}
+  - {fileID: 1655309886}
+  - {fileID: 323272121}
+  - {fileID: 1173965708}
+  - {fileID: 1149986038}
+  - {fileID: 979992268}
+  - {fileID: 1208208650}
+  - {fileID: 831921324}
+  - {fileID: 1117229427}
+  - {fileID: 252687089}
+  - {fileID: 1987179452}
+  - {fileID: 525178877}
+  - {fileID: 661473029}
+  - {fileID: 1954656478}
+  - {fileID: 1665221261}
+  - {fileID: 1287558346}
+  - {fileID: 248233616}
+  - {fileID: 1788848401}
+  - {fileID: 2028664654}
+  - {fileID: 1586730132}
+  - {fileID: 1483180791}
+  - {fileID: 852760167}
+  - {fileID: 363233068}
+  - {fileID: 1456084751}
+  - {fileID: 1652628250}
+  - {fileID: 468158024}
+  - {fileID: 1963382050}
+  - {fileID: 84291369}
+  - {fileID: 1766984116}
+  - {fileID: 295690757}
+  - {fileID: 1483018916}
+  - {fileID: 1679889203}
+  - {fileID: 1624444105}
+  - {fileID: 1874116852}
+  - {fileID: 592700785}
+  - {fileID: 1981701398}
+  - {fileID: 396564853}
+  - {fileID: 213385844}
+  - {fileID: 384335385}
+  - {fileID: 575169168}
+  - {fileID: 424696347}
+  - {fileID: 1340777475}
+  - {fileID: 611454147}
+  - {fileID: 782409768}
+  - {fileID: 1773665135}
+  - {fileID: 298801042}
+  - {fileID: 700740563}
+  - {fileID: 1832213756}
+  - {fileID: 1199046393}
+  - {fileID: 1046530682}
+  - {fileID: 176805785}
+  - {fileID: 1740225072}
+  - {fileID: 1334238481}
+  - {fileID: 647125474}
+  - {fileID: 524176493}
+  - {fileID: 1524517175}
+  - {fileID: 1897074143}
+  - {fileID: 1338956666}
+  - {fileID: 654080811}
+  - {fileID: 654413047}
+  - {fileID: 989903987}
+  - {fileID: 1323624436}
+  - {fileID: 222398372}
+  - {fileID: 1649400399}
+  - {fileID: 1007231759}
+  - {fileID: 748547952}
+  - {fileID: 1197801605}
+  - {fileID: 342445624}
+  - {fileID: 1504257456}
+  - {fileID: 1215589620}
+  - {fileID: 1619426094}
+  - {fileID: 1927802177}
+  - {fileID: 1110080735}
+  - {fileID: 1024637200}
+  - {fileID: 2074950619}
+  - {fileID: 1947770048}
+  - {fileID: 518792551}
+  - {fileID: 484136021}
+  - {fileID: 39955302}
+  - {fileID: 390050865}
+  - {fileID: 1997453167}
+  - {fileID: 1442413495}
+  - {fileID: 1920788213}
+  - {fileID: 1459016948}
+  - {fileID: 1942631413}
+  - {fileID: 1496301997}
+  - {fileID: 1197244000}
+  - {fileID: 1302139039}
+  - {fileID: 1161690716}
+  - {fileID: 1153129171}
+  - {fileID: 1689111759}
+  - {fileID: 1163509309}
+  - {fileID: 1897796390}
+  - {fileID: 949159078}
+  - {fileID: 1361973095}
+  - {fileID: 351539451}
+  - {fileID: 1516397767}
+  - {fileID: 599350692}
+  - {fileID: 487264913}
+  - {fileID: 2057736136}
+  - {fileID: 714766094}
+  - {fileID: 1276006483}
+  - {fileID: 600342620}
+  - {fileID: 1994707209}
+  - {fileID: 1888668675}
+  - {fileID: 1728124174}
+  - {fileID: 906784426}
+  - {fileID: 2075110380}
+  - {fileID: 2114789695}
+  - {fileID: 1633026373}
+  - {fileID: 403352708}
+  - {fileID: 901120551}
+  - {fileID: 914700329}
+  - {fileID: 46101342}
+  - {fileID: 1784215867}
+  - {fileID: 324148307}
+  - {fileID: 1071738360}
+  - {fileID: 491698229}
+  - {fileID: 1691591703}
+  - {fileID: 534149409}
+  Doors:
+  - {fileID: 1738893623}
+  - {fileID: 2011942609}
+  - {fileID: 1601587946}
+  - {fileID: 493207945}
+  x: 17
+  z: 17
+  PlayerOne: {fileID: 1645339245}
   IsKillerOne: 0
-  PlayerTwo: {fileID: 0}
+  PlayerTwo: {fileID: 1014963874}
   IsKillerTwo: 0
-  WalkSpeed: 0
-  InGame: 0
+  WalkSpeed: 2
+  InGame: 1
+  IntentP1: 0
+  IntentP2: 0
 --- !u!1 &1586730131
 GameObject:
   m_ObjectHideFlags: 0
@@ -11892,9 +12041,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8299c83783d32db469d03bddddce368a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerO: {fileID: 0}
-  WalkSpeed: 0
+  GameState: {fileID: 1560977266}
+  IndPlayerOT: 1
   PlayerIndex: 0
+  IsKiller: 0
 --- !u!1 &1649400398
 GameObject:
   m_ObjectHideFlags: 0

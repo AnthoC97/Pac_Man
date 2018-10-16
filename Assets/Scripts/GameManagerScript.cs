@@ -20,9 +20,6 @@ public class GameManagerScript : MonoBehaviour
 	[SerializeField] private GameObject LoseTwo;
 	private Vector3 P2Init;
 	
-	[Header("Speed")]
-	[SerializeField] private float WalkSpeed;
-	
 	[Header("Menu en jeu")]
 	[SerializeField] private GameObject EndMenu;
 	
@@ -38,6 +35,11 @@ public class GameManagerScript : MonoBehaviour
 	public void ButtonMainMenu()
 	{
 		SceneManager.LoadScene("MainMenu");
+	}
+
+	public void ButtonPlay()
+	{
+		GameState.GetComponent<GameState>().InGame = true;
 	}
 	public void ButtonReplay()
 	{
