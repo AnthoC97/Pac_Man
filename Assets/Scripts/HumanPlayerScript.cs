@@ -2,39 +2,27 @@
  * Authors: Bastien PERROTEAU
  */
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Debug = System.Diagnostics.Debug;
 
-public enum MovementAction
-{
-	WantToMoveForward = 1,
-	WantToMoveBackward = 2,
-	WantToMoveLeft = 4,
-	WantToMoveRight = 8,
-}
+public class HumanPlayerScript : MonoBehaviour {
 
-public class IntentScript : MonoBehaviour
-{
 	[Header("GameState")]
 	[SerializeField] private GameState GS;
 
 	[Header("Index Player One or Two")]
-	[SerializeField] public int IndPlayerOT = 1;
+	[SerializeField] public int PlayerIndex = 1;
 
 	[Header("Indice de contrôle")]
-	public int PlayerIndex = 0;
+	public int ControlType = 0;
 
 	private MovementAction intent;
 
-	public bool IsKiller = false;
 
 	void Update () {
 		// Human AZERTY / QWERTY
-		if (PlayerIndex == 0) {
+		if (ControlType == 0) {
 			if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.W)) {
 				intent = intent | MovementAction.WantToMoveForward;
 			}
@@ -49,7 +37,7 @@ public class IntentScript : MonoBehaviour
 			}
 		}
 		// Human Arrow
-		else if (PlayerIndex == 1) {
+		else if (ControlType == 1) {
 			if (Input.GetKey(KeyCode.UpArrow)) {
 				intent = intent | MovementAction.WantToMoveForward;
 			}
@@ -63,36 +51,16 @@ public class IntentScript : MonoBehaviour
 				intent = intent | MovementAction.WantToMoveRight;
 			}
 		}
-		// IA Random Agent
-		else if (PlayerIndex == 2)
-		{
-			
-		}
-		// IA Random Rollout Agent
-		else if (PlayerIndex == 3)
-		{
-			
-		}
-		// IA Dijkstra Agent / A* Agent 
-		else if (PlayerIndex == 4)
-		{
-			
-		}
-		// IA  Tabular Q Learning Agent 
-		else if (PlayerIndex == 5)
-		{
-			
-		}
 	}
 
 	private void LateUpdate() {
 		// Si Player 1 on transmet à intentP1
-		if (IndPlayerOT == 1)
+		if (PlayerIndex == 1)
 		{
 			GS.IntentP1 = intent;
 		}
 		// Si Player 2 on transmet à intentP2
-		else if (IndPlayerOT == 2)
+		else if (PlayerIndex == 2)
 		{
 			GS.IntentP2 = intent;
 		}

@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿/**
+ * Authors: Bastien PERROTEAU
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,9 +9,10 @@ using UnityEngine.UI;
 
 public class ButtonScript : MonoBehaviour
 {
-	[SerializeField] private Button Loader;
+	[Header("Liste des LevelDesign")]
 	[SerializeField] private Transform ListDesign;
-
+	
+	[Header("Nombre de LevelDesign")]
 	[SerializeField] private int NbChoix;
 
 	private int indLevel = 0;
@@ -50,6 +54,10 @@ public class ButtonScript : MonoBehaviour
 	public void LoadGameScene()
 	{
 		if (indLevel == 0)
+		{
+			SceneManager.LoadScene("GameScene");
+		}
+		else if (indLevel == 1)
 		{
 			SceneManager.LoadScene("GameScene");
 		}

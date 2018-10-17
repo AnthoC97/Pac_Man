@@ -47,17 +47,22 @@ public class GameState : MonoBehaviour {
 	public MovementAction IntentP1;
 	public MovementAction IntentP2;
 
-	//Random Gumball Position
+	// Random Gumball Position
 	public Vector3 RandGumball()
 	{
-		int X = UnityEngine.Random.Range(0, x+1);
-		int Z = UnityEngine.Random.Range(0, z+1);
+		int X = UnityEngine.Random.Range(0, x);
+		int Z = UnityEngine.Random.Range(0, z);
 		while (EtatCase[X,Z] != 0)
 		{
-			X = UnityEngine.Random.Range(0, x+1);
-			Z = UnityEngine.Random.Range(0, z+1);
+			X = UnityEngine.Random.Range(0, x);
+			Z = UnityEngine.Random.Range(0, z);
 		}
 		return new Vector3(X,0.3f,Z);
+	}
+
+	public void RandomizeGumball()
+	{
+		GumBall.transform.position = RandGumball();
 	}
 
 	/**
@@ -108,7 +113,7 @@ public class GameState : MonoBehaviour {
 
 	void Start ()
 	{
-		//Initialisation du statut à 0 (passage possible)
+		// Initialisation du statut à 0 (passage possible)
 		EtatCase = new int[x,z];
 		for (int i = 0; i < x; i++)
 		{
@@ -117,18 +122,16 @@ public class GameState : MonoBehaviour {
 				EtatCase[i,j] = 0;
 			}
 		}
-		//Statut des obstacles mis à 1
+		// Statut des obstacles mis à 1
 		foreach (Transform cpt in Obstacles)
 		{
 			EtatCase[(int)cpt.position.x,(int)cpt.position.z] = 1;
 		}
-		//Statut des Portails mis à 2
+		// Statut des Portails mis à 2
 		foreach (Transform cpt in Doors)
 		{
 			EtatCase[(int)cpt.position.x,(int)cpt.position.z] = 2;
 		}
-		//Set Gumball Position
-		GumBall.transform.position = RandGumball();
 	}
 
 	private void Update()
@@ -165,7 +168,7 @@ public class GameState : MonoBehaviour {
 	void FixedUpdate()
 	{
 		GumBall.transform.Rotate(new Vector3(0,25,0) * Time.deltaTime);
-		//Test si jeu lancé
+		// Test si jeu lancé
 		if (InGame)
 		{
 			IntentManagement(IntentP1,PlayerOne);

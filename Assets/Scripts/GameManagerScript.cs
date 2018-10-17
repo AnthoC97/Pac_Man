@@ -23,9 +23,12 @@ public class GameManagerScript : MonoBehaviour
 
 	[Header("Menu en jeu")]
 	[SerializeField] private GameObject EndMenu;
+	[SerializeField] private GameObject PanelStart;
 
 	public void ButtonPlay()
 	{
+		PanelStart.SetActive(false);
+		GS.RandomizeGumball();
 		GS.InGame = true;
 	}
 	public void ButtonReplay()
@@ -34,17 +37,22 @@ public class GameManagerScript : MonoBehaviour
 		GS.PlayerTwo.transform.position = P2Init;
 		GS.IsKillerOne = false;
 		GS.IsKillerTwo = false;
-		GS.GumBall.transform.position = GS.RandGumball();
+		WinOne.SetActive(false);
+		WinTwo.SetActive(false);
+		LoseOne.SetActive(false);
+		LoseTwo.SetActive(false);
+		GS.RandomizeGumball();
+		GS.GumBall.SetActive(true);
 		EndMenu.SetActive(false);
 		GS.InGame = true;
 	}
 
-	//Calcul de distance entre 2 points
+	// Calcul de distance entre 2 points
 	private float DistanceCount(Transform T1, Transform T2)
 	{
 		return Mathf.Sqrt( Mathf.Pow(T1.position.x - T2.position.x,2) + Mathf.Pow(T1.position.z - T2.position.z,2));
 	}
-	//Passage de Portail
+	// Passage de Portail
 	private void Portal(GameObject Player, Transform North, Transform South, Transform East, Transform West)
 	{
 		if (West.position.z <= Player.transform.position.z + (Player.transform.localScale.z / 4))
@@ -73,10 +81,10 @@ public class GameManagerScript : MonoBehaviour
 	}
 
 	void Update () {
-		//Test si jeu lancé
+		// Test si jeu lancé
 		if (GS.InGame)
 		{
-			//Test contact entre sphère
+			// Test contact entre sphère
 			if (DistanceCount(GS.PlayerOne.transform, GS.PlayerTwo.transform) <= GS.PlayerTwo.transform.localScale.x)
 			{
 				if (GS.IsKillerOne)
@@ -94,7 +102,7 @@ public class GameManagerScript : MonoBehaviour
 					EndMenu.SetActive(true);
 				}
 			}
-			//Test contact avec GumBall
+			// Test contact avec GumBall
 			if (DistanceCount(GS.PlayerOne.transform, GS.GumBall.transform) <=
 			    GS.GumBall.transform.localScale.x * 1.9)
 			{
@@ -107,7 +115,7 @@ public class GameManagerScript : MonoBehaviour
 				GS.IsKillerTwo = true;
 				GS.Timetokill = GS.TimeKiller;
 			}
-			//Portail
+			// Portail
 			Portal(GS.PlayerOne, GS.Doors[0], GS.Doors[1], GS.Doors[2], GS.Doors[3]);
 			Portal(GS.PlayerTwo, GS.Doors[0], GS.Doors[1], GS.Doors[2], GS.Doors[3]);
 		}
