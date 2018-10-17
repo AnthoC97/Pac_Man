@@ -1,3 +1,4 @@
+/*
 internal class HumanPlayerAgent : Agent
 {
     private HumanPlayerScript script;
@@ -14,3 +15,4 @@ internal class HumanPlayerAgent : Agent
         return;
     }
 }
+*/

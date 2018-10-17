@@ -50,12 +50,12 @@ public class GameState : MonoBehaviour {
 	// Random Gumball Position
 	public Vector3 RandGumball()
 	{
-		int X = UnityEngine.Random.Range(0, x+1);
-		int Z = UnityEngine.Random.Range(0, z+1);
+		int X = UnityEngine.Random.Range(0, x);
+		int Z = UnityEngine.Random.Range(0, z);
 		while (EtatCase[X,Z] != 0)
 		{
-			X = UnityEngine.Random.Range(0, x+1);
-			Z = UnityEngine.Random.Range(0, z+1);
+			X = UnityEngine.Random.Range(0, x);
+			Z = UnityEngine.Random.Range(0, z);
 		}
 		return new Vector3(X,0.3f,Z);
 	}

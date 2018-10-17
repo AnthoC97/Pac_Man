@@ -41,7 +41,8 @@ public class GameManagerScript : MonoBehaviour
 		WinTwo.SetActive(false);
 		LoseOne.SetActive(false);
 		LoseTwo.SetActive(false);
-		GS.GumBall.transform.position = GS.RandGumball();
+		GS.RandomizeGumball();
+		GS.GumBall.SetActive(true);
 		EndMenu.SetActive(false);
 		GS.InGame = true;
 	}
