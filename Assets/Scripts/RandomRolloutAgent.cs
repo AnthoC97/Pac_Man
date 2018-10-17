@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-/*
+
 public class RandomRolloutAgent : Agent
 {
     private const int rolloutCount = 100;
@@ -41,4 +41,3 @@ public class RandomRolloutAgent : Agent
         return;
     }
 }
-*/

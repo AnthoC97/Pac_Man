@@ -1,5 +1,5 @@
 using System;
-/*
+
 public class RandomAgent : Agent
 {
     public override MovementAction act(PacManGameState gs, int playerNumber) {
@@ -12,4 +12,3 @@ public class RandomAgent : Agent
         return;
     }
 }
-*/

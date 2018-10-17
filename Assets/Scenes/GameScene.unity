@@ -1684,6 +1684,11 @@ Prefab:
       propertyPath: PanelStart
       value: 
       objectReference: {fileID: 654177809}
+    - target: {fileID: 114248284166804026, guid: 783d49b4b1c14b042b88be495e8e8c6c,
+        type: 2}
+      propertyPath: WalkSpeed
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 783d49b4b1c14b042b88be495e8e8c6c, type: 2}
   m_IsPrefabAsset: 0

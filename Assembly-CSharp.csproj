@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\GameManagerScript.cs" />
     <Compile Include="Assets\Scripts\GameState.cs" />
     <Compile Include="Assets\Scripts\HumanPlayerAgent.cs" />
+    <Compile Include="Assets\Scripts\HumanPlayerScript.cs" />
     <Compile Include="Assets\Scripts\IntentScript.cs" />
     <Compile Include="Assets\Scripts\PlayerSelection.cs" />
     <Compile Include="Assets\Scripts\RandomAgent.cs" />
