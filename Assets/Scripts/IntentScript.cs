@@ -20,7 +20,7 @@ public enum MovementAction
 public class IntentScript : MonoBehaviour
 {
 	[Header("GameState")]
-	[SerializeField] private GameObject GameState;
+	[SerializeField] private GameState GS;
 
 	[Header("Index Player One or Two")]
 	[SerializeField] public int IndPlayerOT = 1;
@@ -32,13 +32,8 @@ public class IntentScript : MonoBehaviour
 
 	public bool IsKiller = false;
 
-	void Start () {
-		//Debug.Assert(level != null, "level != null");
-		//walls = level.GetComponent<MappingCounter>().EtatCase;
-		//Debug.Assert(walls != null, "walls != null");
-	}
-
 	void Update () {
+		// Human AZERTY / QWERTY
 		if (PlayerIndex == 0) {
 			if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.W)) {
 				intent = intent | MovementAction.WantToMoveForward;
@@ -52,7 +47,9 @@ public class IntentScript : MonoBehaviour
 			if (Input.GetKey(KeyCode.D)) {
 				intent = intent | MovementAction.WantToMoveRight;
 			}
-		} else if (PlayerIndex == 1) {
+		}
+		// Human Arrow
+		else if (PlayerIndex == 1) {
 			if (Input.GetKey(KeyCode.UpArrow)) {
 				intent = intent | MovementAction.WantToMoveForward;
 			}
@@ -66,16 +63,38 @@ public class IntentScript : MonoBehaviour
 				intent = intent | MovementAction.WantToMoveRight;
 			}
 		}
+		// IA Random Agent
+		else if (PlayerIndex == 2)
+		{
+			
+		}
+		// IA Random Rollout Agent
+		else if (PlayerIndex == 3)
+		{
+			
+		}
+		// IA Dijkstra Agent / A* Agent 
+		else if (PlayerIndex == 4)
+		{
+			
+		}
+		// IA  Tabular Q Learning Agent 
+		else if (PlayerIndex == 5)
+		{
+			
+		}
 	}
 
-	private void FixedUpdate() {
+	private void LateUpdate() {
+		// Si Player 1 on transmet à intentP1
 		if (IndPlayerOT == 1)
 		{
-			GameState.GetComponent<GameState>().IntentP1 = intent;
+			GS.IntentP1 = intent;
 		}
+		// Si Player 2 on transmet à intentP2
 		else if (IndPlayerOT == 2)
 		{
-			GameState.GetComponent<GameState>().IntentP2 = intent;
+			GS.IntentP2 = intent;
 		}
 		intent = 0;
 	}
