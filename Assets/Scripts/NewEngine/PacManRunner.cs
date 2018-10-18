@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/**
+ * Authors: Florian CHAMPAUD
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.PlayerLoop;
@@ -17,8 +21,8 @@ public class PacManRunner{
     }
 
     public bool[] RunFrame() {
-        MovementIntent action1 = agent1.Act(gs,1);
-        MovementIntent action2 = agent2.Act(gs,2);
+        var action1 = agent1.Act(gs, 1);
+        var action2 = agent2.Act(gs, 2);
 
         return PacManGameState.Step(gs, action1, action2, speed);
     }
