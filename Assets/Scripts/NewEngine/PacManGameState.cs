@@ -42,6 +42,32 @@ public class PacManGameState{
         GumActive = false;
         GumBall = this.RandGumball();
     }
+        // Ensemble des Setteurs pour Button
+    // Set P1
+    public void SetP1(Vector3 V3)
+    {
+        this.P1 = V3;
+    }
+    // Set P2
+    public void SetP2(Vector3 V3)
+    {
+        this.P2 = V3;
+    }
+    // Set is killerone
+    public void SetBoolP1(bool bl)
+    {
+        this.P1Killer = bl;
+    }
+    // Set is killer two
+    public void SetBoolP2(bool bl)
+    {
+        this.P2Killer = bl;
+    }
+    // Set GumStatus
+    public void SetGumStatus(bool bl)
+    {
+        this.GumActive = bl;
+    }
         // Ensemble des Getteurs
     // Copie du GameState
     public PacManGameState Copy()
