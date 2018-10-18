@@ -48,6 +48,41 @@ public class PacManGameState{
     {
         return this;
     }
+    // Récupérer P1
+    public Vector3 GetP1Vector()
+    {
+        return this.P1;
+    }
+    // Récupérer P2
+    public Vector3 GetP2Vector()
+    {
+        return this.P2;
+    }
+    // Récupérer Gumball
+    public Vector3 GetGumVector()
+    {
+        return this.GumBall;
+    }
+    // Récupérer Booléen de P1
+    public bool GetP1Status()
+    {
+        return this.P1Killer;
+    }
+    // Récupérer Booléen de P1
+    public bool GetP2Status()
+    {
+        return this.P2Killer;
+    }
+    // Récupérer Booléen de P1
+    public bool GetGumStatus()
+    {
+        return this.GumActive;
+    }
+    // Récupérer EtatCase
+    public int[,] GetEtatCase()
+    {
+        return this.EtatCase;
+    }
 
     // Récupère Intent et Applique changement de position
     public static int Step(PacManGameState p, MovementIntent action1, MovementIntent action2, float Speed)
