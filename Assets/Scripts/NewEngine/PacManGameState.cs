@@ -1,7 +1,7 @@
 ﻿/**
  * Authors: Bastien PERROTEAU
  */
-using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -44,6 +44,25 @@ public class PacManGameState{
     {
         return this;
     }
+
+    public Vector3 GetPositionForPlayer(int p) {
+        if (p == 0) {
+            return P1;
+        }
+        else if (p == 1) {
+            return P2;
+        }
+
+        return Vector3.zero;
+    }
+    public void SetPositionForPlayer(int p, Vector3 position) {
+        if (p == 0) {
+            P1 = position;
+        }
+        else if (p == 1) {
+            P2 = position;
+        }
+    }
     // Récupérer P1
     public Vector3 GetP1Vector()
     {
@@ -85,18 +104,18 @@ public class PacManGameState{
     {
         if (p.P1Killer)
         {
-            IntentManagement(action1, p.P1, Speed * 1.2f,p);
-            IntentManagement(action2, p.P2, Speed,p);
+            IntentManagement(action1, 0, Speed * 1.2f,p);
+            IntentManagement(action2, 1, Speed,p);
         }
         else if (p.P2Killer)
         {
-            IntentManagement(action1, p.P1, Speed,p);
-            IntentManagement(action2, p.P2, Speed * 1.2f,p);
+            IntentManagement(action1, 0, Speed,p);
+            IntentManagement(action2, 1, Speed * 1.2f,p);
         }
         else
         {
-            IntentManagement(action1, p.P1, Speed,p);
-            IntentManagement(action2, p.P2, Speed,p);
+            IntentManagement(action1, 0, Speed,p);
+            IntentManagement(action2, 1, Speed,p);
         }
         return new bool[3];
     }
@@ -121,29 +140,33 @@ public class PacManGameState{
     /**
 	 * Tries to move a player in a direction, cancelling movement on collision
 	 */
-    private static void tryMovingInDirection(Vector3 player, Vector3 direction, float Speed, PacManGameState p) {
-        Vector3 prevPosition = player;
-        player += direction * Speed * Time.deltaTime;
-        if (CollidesWithWalls(player, p)) {
-            player = prevPosition;
+    private static void tryMovingInDirection(int playerIndex, Vector3 direction, float Speed, PacManGameState p) {
+        Vector3 newPosition = p.GetPositionForPlayer(playerIndex);
+        newPosition += direction * Speed * Time.deltaTime;
+
+        if (CollidesWithWalls(newPosition, p)) {
+            return;
         }
+
+        p.SetPositionForPlayer(playerIndex, newPosition);
     }
 
     // Setter mouvement
-    private static void IntentManagement(MovementIntent Intent, Vector3 Player, float Speed, PacManGameState p) {
+    private static void IntentManagement(MovementIntent Intent, int playerIndex, float Speed, PacManGameState p) {
+
         if ((Intent & MovementIntent.WantToMoveForward) != 0) {
-            tryMovingInDirection(Player, Vector3.forward, Speed, p);
+            tryMovingInDirection(playerIndex, Vector3.forward, Speed, p);
         }
 
         if ((Intent & MovementIntent.WantToMoveBackward) != 0) {
-            tryMovingInDirection(Player, Vector3.back, Speed, p);
+            tryMovingInDirection(playerIndex, Vector3.back, Speed, p);
         }
 
         if ((Intent & MovementIntent.WantToMoveLeft) != 0) {
-            tryMovingInDirection(Player, Vector3.left, Speed, p);
+            tryMovingInDirection(playerIndex, Vector3.left, Speed, p);
         }
         if ((Intent & MovementIntent.WantToMoveRight) != 0) {
-            tryMovingInDirection(Player, Vector3.right, Speed, p);
+            tryMovingInDirection(playerIndex, Vector3.right, Speed, p);
         }
     }
     // Random Gumball Position

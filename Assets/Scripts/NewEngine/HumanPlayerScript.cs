@@ -18,6 +18,7 @@ public class HumanPlayerScript : MonoBehaviour {
 
 
 	void Update () {
+		Intent = 0;
 		// Human AZERTY / QWERTY
 		if (ControlType == 0) {
 			if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.W)) {

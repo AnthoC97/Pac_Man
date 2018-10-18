@@ -2,11 +2,6 @@
  * Authors: Florian CHAMPAUD
  */
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Experimental.PlayerLoop;
-
 public class PacManRunner{
     private IAgent agent1;
     private IAgent agent2;

@@ -9,7 +9,6 @@ public class PacManGameEngineScript : MonoBehaviour
     private PacManRunner runner;
     private IAgent agentP1, agentP2;
     private PacManGameState gs;
-    private bool inGame = false;
     private float speed = 4;
 
     [Header("Listes")]
@@ -58,7 +57,7 @@ public class PacManGameEngineScript : MonoBehaviour
 
 	// Update is called once per frame
 	void Update () {
-        if (!inGame)
+        if (!InGame)
         {
             return;
         }
@@ -69,10 +68,10 @@ public class PacManGameEngineScript : MonoBehaviour
         PlayerTwo.transform.position = gs.GetP2Vector();
         if (frameResult[2])//if state is terminal
         {
-            inGame = false;
+            InGame = false;
             //TODO Affichage du joueur/agent gagnant et perdant
         }
-        
+
 	}
 
     private void InitializeGame(int agent1, int agent2)
@@ -113,7 +112,7 @@ public class PacManGameEngineScript : MonoBehaviour
         }
         gs = new PacManGameState(x, z, PlayerOne.transform.position, PlayerTwo.transform.position, Obstacles, Doors);
         runner = new PacManRunner(agentP1, agentP2, gs, speed);
-        inGame = true;
+        InGame = true;
     }
 
 }
