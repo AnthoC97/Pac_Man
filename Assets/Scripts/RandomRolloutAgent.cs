@@ -1,14 +1,17 @@
+/**
+ * Authors: Florian CHAMPAUD
+ */
 using System;
 using UnityEngine;
 
-public class RandomRolloutAgent : Agent
+public class RandomRolloutAgent : IAgent
 {
     private const int rolloutCount = 100;
 
-    public override MovementAction act(PacManGameState gs, int playerNumber) {
+    public MovementIntent Act(PacManGameState gs, int playerNumber) {
         int bestActionScore = 0;
-        MovementAction bestAction = 0;
-        var movementActionValues = (MovementAction[]) Enum.GetValues(typeof(MovementAction));
+        MovementIntent bestAction = 0;
+        var movementActionValues = (MovementIntent[]) Enum.GetValues(typeof(MovementIntent));
 
         foreach (var action in movementActionValues) {
             int actionScore = 0;
@@ -18,7 +21,7 @@ public class RandomRolloutAgent : Agent
                 var actionIndex = UnityEngine.Random.Range(0, movementActionValues.Length);
                 var randAction = movementActionValues.GetValue(actionIndex);
 
-                var result = PacManGameState.step(gsCopy, action, randAction);
+                var result = PacManGameState.Step(gsCopy, action, randAction);
 
                 if (playerNumber > 1) { // Player number out of range
                     UnityEngine.Debug.LogError("ERROR: playerNumber out of range [0; 1]");
@@ -37,7 +40,7 @@ public class RandomRolloutAgent : Agent
         return bestAction;
     }
 
-    public override void obs(float reward, bool terminal) {
+    public void Obs(float reward, bool terminal) {
         return;
     }
 }

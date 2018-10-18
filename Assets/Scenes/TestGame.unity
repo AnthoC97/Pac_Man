@@ -12497,8 +12497,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9139536a7426404485d95c33b341a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameState: {fileID: 0}
   PlayerOne: {fileID: 1645339245}
+  WinOne: {fileID: 0}
+  LoseOne: {fileID: 0}
   PlayerTwo: {fileID: 1014963874}
+  WinTwo: {fileID: 0}
+  LoseTwo: {fileID: 0}
+  WalkSpeed: 2
+  EndMenu: {fileID: 0}
 --- !u!1 &1869941980
 GameObject:
   m_ObjectHideFlags: 0

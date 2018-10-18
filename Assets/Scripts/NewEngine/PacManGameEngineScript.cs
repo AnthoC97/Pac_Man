@@ -15,6 +15,7 @@ public class PacManGameEngineScript : MonoBehaviour {
     private IAgent agentP1, agentP2;
     private PacManGameState gs;
     private bool inGame = false;
+    private float speed = 4;
 
     [Header("Taille Map")]
     [SerializeField] private int x;
@@ -27,7 +28,7 @@ public class PacManGameEngineScript : MonoBehaviour {
 
     private void Awake()
     {
-        
+
     }
 
     // Use this for initialization
@@ -35,7 +36,7 @@ public class PacManGameEngineScript : MonoBehaviour {
         //A connecter avec l'interface
         InitializeGame(1,1);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
         if (!inGame)
@@ -82,7 +83,7 @@ public class PacManGameEngineScript : MonoBehaviour {
                 break;
         }
         gs = new PacManGameState(x, z);
-        runner = new PacManRunner(agentP1, agentP2, gs);
+        runner = new PacManRunner(agentP1, agentP2, gs, speed);
         inGame = true;
     }
 

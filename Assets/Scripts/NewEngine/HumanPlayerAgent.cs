@@ -1,5 +1,8 @@
+/**
+ * Authors: Florian CHAMPAUD
+ */
 
-internal class HumanPlayerAgent : Agent
+internal class HumanPlayerAgent : IAgent
 {
     private HumanPlayerScript script;
 
@@ -7,11 +10,11 @@ internal class HumanPlayerAgent : Agent
         this.script = script;
     }
 
-    public override MovementAction act(PacManGameState gs, int playerNumber) {
-        return script.intent;
+    public MovementIntent Act(PacManGameState gs, int playerNumber) {
+        return gs.IntentP1;
     }
 
-    public override void obs(float reward, bool terminal) {
+    public void Obs(float reward, bool terminal) {
         return;
     }
 }
