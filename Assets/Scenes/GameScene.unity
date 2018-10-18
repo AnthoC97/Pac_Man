@@ -1882,10 +1882,15 @@ MonoBehaviour:
   PlayerOne: {fileID: 1645339245}
   MatOne: {fileID: 2100000, guid: 0c631c96ecee43444aed8bb00c8b6000, type: 2}
   PlayerTwo: {fileID: 1014963874}
-  MaTwo: {fileID: 2100000, guid: 8e37c3896831921478c2dbdaff0a103c, type: 2}
+  MatTwo: {fileID: 0}
   MatKiller: {fileID: 2100000, guid: 2a0dad631c7950f49a892d71e33b44ee, type: 2}
   TimeKiller: 10
   Timetokill: 0.1
+  WinOne: {fileID: 1285055054}
+  WinTwo: {fileID: 1593756708}
+  LoseOne: {fileID: 1996866882}
+  LoseTwo: {fileID: 1837110695}
+  EndMenu: {fileID: 783016270}
   WalkSpeed: 4
   GumBall: {fileID: 1212408281}
   InGame: 0

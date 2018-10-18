@@ -107,6 +107,11 @@ public class PacManGameState{
             P2 = position;
         }
     }
+
+    public void SetPositionGumball(int gx, int gy, int gz)
+    {
+        GumBall = new Vector3(gx,gy,gz);
+    }
     // Set GumStatus
     public void SetGumStatus(bool bl)
     {

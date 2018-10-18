@@ -48,7 +48,9 @@ public class ButtonPlayScript : MonoBehaviour
 		LoseOne.SetActive(false);
 		LoseTwo.SetActive(false);
 		PMGES.gs.RandomizeGumball();
+		PMGES.GumBall.transform.position = PMGES.gs.GetGumVector();
 		PMGES.gs.SetGumStatus(true);
+		PMGES.GumBall.SetActive(true);
 		EndMenu.SetActive(false);
 		PMGES.InGame = true;
 	}
