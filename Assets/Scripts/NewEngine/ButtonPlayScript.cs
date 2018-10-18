@@ -30,13 +30,11 @@ public class ButtonPlayScript : MonoBehaviour
 	public void ButtonPlay()
 	{
 		PMGES.InitializeGame(PMGES.PlayerOneAgentId,PMGES.PlayerTwoAgentId);
-		//P1Init = PMGES.gs.GetP1Vector();
-		//P2Init = PMGES.gs.GetP2Vector();
-		Debug.Log("Hey");
-		
+		P1Init = PMGES.gs.GetP1Vector();
+		P2Init = PMGES.gs.GetP2Vector();
 		PanelStart.SetActive(false);
-		//PMGES.gs.RandomizeGumball();
-		//PMGES.gs.SetGumStatus(true);
+		PMGES.gs.RandomizeGumball();
+		PMGES.gs.SetGumStatus(true);
 	}
 
 	public void ButtonReplay()
