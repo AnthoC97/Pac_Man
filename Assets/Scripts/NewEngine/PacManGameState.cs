@@ -5,14 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MovementIntent
-{
-    WantToMoveForward = 1,
-    WantToMoveBackward = 2,
-    WantToMoveLeft = 4,
-    WantToMoveRight = 8,
-}
-
 public class PacManGameState{
     private int[,] EtatCase;
     private Vector3 P1, P2, GumBall;
