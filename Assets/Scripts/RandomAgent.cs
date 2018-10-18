@@ -1,3 +1,6 @@
+/**
+ * Authors: Florian CHAMPAUD
+ */
 using System;
 
 public class RandomAgent : IAgent
