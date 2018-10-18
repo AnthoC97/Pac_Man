@@ -42,6 +42,30 @@ public class PacManGameState{
         GumActive = false;
         GumBall = this.RandGumball();
     }
+    // Copie du GameState
+    public PacManGameState(PacManGameState PMGS)
+    {
+        this.EtatCase = new int[PMGS.XSize,PMGS.ZSize];
+        // Initialisation de Etat case
+        for (int i = 0; i < PMGS.XSize; i++)
+        {
+            for (int j = 0; j < PMGS.ZSize; j++)
+            {
+                this.EtatCase[i, j] = PMGS.EtatCase[i, j];
+            }
+        }
+
+        this.XSize = PMGS.XSize;
+        this.ZSize = PMGS.ZSize;
+        this.P1 = PMGS.P1;
+        this.P2 = PMGS.P2;
+        this.P1Killer = PMGS.P1Killer;
+        this.P2Killer = PMGS.P2Killer;
+        this.GumActive = PMGS.GumActive;
+        this.GumBall = PMGS.GumBall;
+        
+    }
+    
         // Ensemble des Setteurs pour Button
     // Set P1
     public void SetP1(Vector3 V3)
@@ -68,12 +92,8 @@ public class PacManGameState{
     {
         this.GumActive = bl;
     }
+    
         // Ensemble des Getteurs
-    // Copie du GameState
-    public PacManGameState Copy()
-    {
-        return this;
-    }
     // Récupérer P1
     public Vector3 GetP1Vector()
     {
