@@ -20,6 +20,10 @@ public class PacManGameEngineScript : MonoBehaviour {
     [SerializeField] private int x;
     [SerializeField] private int z;
 
+    [Header("Players")]
+    [SerializeField] private GameObject player1;
+    [SerializeField] private GameObject player2;
+
 
     private void Awake()
     {
@@ -38,7 +42,17 @@ public class PacManGameEngineScript : MonoBehaviour {
         {
             return;
         }
-
+        //Run a frame in the runner
+        bool [,,] getFrame = runner.runFrame()
+        gs =  runner.getState()
+        player1.transform.position =  
+        player2.transform.position =
+        if (getFrame[2])
+        {
+            inGame = false;
+            //Affichage du joueur/agent gagnant et perdant
+        }
+        
 	}
 
     private void InitializeGame(int agent1, int agent2)
