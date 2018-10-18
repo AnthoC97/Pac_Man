@@ -17,8 +17,8 @@ public class PacManRunner{
     }
 
     public bool[] RunFrame() {
-        MovementIntent action1 = agent1.Act(gs);
-        MovementIntent action2 = agent2.Act(gs);
+        MovementIntent action1 = agent1.Act(gs,1);
+        MovementIntent action2 = agent2.Act(gs,2);
 
         return PacManGameState.Step(gs, action1, action2, speed);
     }

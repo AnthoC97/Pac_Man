@@ -89,7 +89,7 @@ public class PacManGameState{
     }
 
     // Récupère Intent et Applique changement de position
-    public static int Step(PacManGameState p, MovementIntent action1, MovementIntent action2, float Speed)
+    public static bool[] Step(PacManGameState p, MovementIntent action1, MovementIntent action2, float Speed)
     {
         if (p.P1Killer)
         {
@@ -106,7 +106,7 @@ public class PacManGameState{
             IntentManagement(action1, p.P1, Speed,p);
             IntentManagement(action2, p.P2, Speed,p);
         }
-        return 0;
+        return new bool[3];
     }
     
     /**

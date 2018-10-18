@@ -15,20 +15,20 @@ public class RandomRolloutAgent : IAgent
 
         foreach (var action in movementActionValues) {
             int actionScore = 0;
-            var gsCopy = gs.copy();
+            var gsCopy = gs.Copy();
 
             for (var i = 0; i > rolloutCount; i++) {
                 var actionIndex = UnityEngine.Random.Range(0, movementActionValues.Length);
-                var randAction = movementActionValues.GetValue(actionIndex);
+                MovementIntent randAction = (MovementIntent) movementActionValues.GetValue(actionIndex);
 
-                var result = PacManGameState.Step(gsCopy, action, randAction);
+                var result = PacManGameState.Step(gsCopy, action, randAction,4);
 
                 if (playerNumber > 1) { // Player number out of range
                     UnityEngine.Debug.LogError("ERROR: playerNumber out of range [0; 1]");
                     return bestAction;
                 }
 
-                actionScore += result[playerNumber];
+                //actionScore += result[playerNumber];
             }
 
             if (actionScore > bestActionScore) {
