@@ -1882,7 +1882,7 @@ MonoBehaviour:
   PlayerOne: {fileID: 1645339245}
   MatOne: {fileID: 2100000, guid: 0c631c96ecee43444aed8bb00c8b6000, type: 2}
   PlayerTwo: {fileID: 1014963874}
-  MatTwo: {fileID: 0}
+  MatTwo: {fileID: 2100000, guid: 8e37c3896831921478c2dbdaff0a103c, type: 2}
   MatKiller: {fileID: 2100000, guid: 2a0dad631c7950f49a892d71e33b44ee, type: 2}
   TimeKiller: 10
   Timetokill: 0.1
