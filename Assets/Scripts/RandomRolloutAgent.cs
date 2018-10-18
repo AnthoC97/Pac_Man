@@ -28,7 +28,7 @@ public class RandomRolloutAgent : IAgent
                     return bestAction;
                 }
 
-                //actionScore += result[playerNumber];
+                actionScore += result[playerNumber] ? 1 : 0;
             }
 
             if (actionScore > bestActionScore) {
