@@ -22,4 +22,8 @@ public class PacManRunner{
 
         return PacManGameState.Step(gs, action1, action2, speed);
     }
+
+    public PacManGameState GetState() {
+        return this.gs;
+    }
 }
