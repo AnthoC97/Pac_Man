@@ -12,11 +12,11 @@ public enum MovementIntent
 
 public class PacManGameState{
     private int[,] EtatCase;
-    private Transform P1, P2, GumBall;
+    private Vector3 P1, P2, GumBall;
     private bool P1Killer, P2Killer, GumActive = false;
 
     //Constructeur
-    public PacManGameState(int x, int z, Transform p1, Transform p2, Transform gumball, bool p1k, bool p2k, bool gumact, List<Transform> ListObstacle, List<Transform> ListDoors)
+    public PacManGameState(int x, int z, Vector3 p1, Vector3 p2, Vector3 gumball, bool p1k, bool p2k, bool gumact, List<Transform> ListObstacle, List<Transform> ListDoors)
     {
         // Initialisation à 0 
         for (int i = 0; i < x; i++)
@@ -52,8 +52,8 @@ public class PacManGameState{
     // Récupère Intent et Applique changement de position
     public static int Step(PacManGameState p, MovementIntent action1, MovementIntent action2, float Speed)
     {
-        IntentManagement(action1, p.P1.position, Speed,p);
-        IntentManagement(action2, p.P2.position, Speed,p);
+        IntentManagement(action1, p.P1, Speed,p);
+        IntentManagement(action2, p.P2, Speed,p);
         return 0;
     }
     
