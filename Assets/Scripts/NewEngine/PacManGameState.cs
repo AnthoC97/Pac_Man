@@ -52,20 +52,20 @@ public class PacManGameState{
     // Récupère Intent et Applique changement de position
     public static int Step(PacManGameState p, MovementIntent action1, MovementIntent action2, float Speed)
     {
-        IntentManagement(action1, p.P1, Speed,p);
-        IntentManagement(action2, p.P2, Speed,p);
+        IntentManagement(action1, p.P1.position, Speed,p);
+        IntentManagement(action2, p.P2.position, Speed,p);
         return 0;
     }
     
     /**
 	 * Returns whether passed GameObject collides with a wall
 	 */
-    private static bool CollidesWithWalls(Transform player, PacManGameState p)
+    private static bool CollidesWithWalls(Vector3 player, PacManGameState p)
     {
-        float borderLeft = player.position.x - player.localScale.x / 2;
-        float borderRight = player.position.x + player.localScale.x / 2;
-        float borderUp = player.position.z - player.localScale.z / 2;
-        float borderDown = player.position.z + player.localScale.z / 2;
+        float borderLeft = player.x - 0.35f / 2;
+        float borderRight = player.x + 0.35f / 2;
+        float borderUp = player.z - 0.35f / 2;
+        float borderDown = player.z + 0.35f / 2;
 
         // Works because we are axis aligned and player is not wider than walls
         return p.EtatCase[(int) (borderLeft + .5), (int) (borderUp + .5)] == 1 ||
@@ -77,16 +77,16 @@ public class PacManGameState{
     /**
 	 * Tries to move a player in a direction, cancelling movement on collision
 	 */
-    private static void tryMovingInDirection(Transform player, Vector3 direction, float Speed, PacManGameState p) {
-        Vector3 prevPosition = player.position;
-        player.position += player.rotation * direction * Speed * Time.deltaTime;
+    private static void tryMovingInDirection(Vector3 player, Vector3 direction, float Speed, PacManGameState p) {
+        Vector3 prevPosition = player;
+        player += direction * Speed * Time.deltaTime;
         if (CollidesWithWalls(player, p)) {
-            player.position = prevPosition;
+            player = prevPosition;
         }
     }
     
     // Setter mouvement
-    private static void IntentManagement(MovementIntent Intent, Transform Player, float Speed, PacManGameState p) {
+    private static void IntentManagement(MovementIntent Intent, Vector3 Player, float Speed, PacManGameState p) {
         if ((Intent & MovementIntent.WantToMoveForward) != 0) {
             tryMovingInDirection(Player, Vector3.forward, Speed, p);
         }
