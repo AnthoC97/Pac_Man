@@ -206,18 +206,18 @@ public class PacManGameState{
     private static void IntentManagement(MovementIntent Intent, int playerIndex, float Speed, PacManGameState p) {
 
         if ((Intent & MovementIntent.WantToMoveForward) != 0) {
-            tryMovingInDirection(playerIndex, Vector3.forward, Speed, p);
+            tryMovingInDirection(playerIndex, Vector3.left, Speed, p);
         }
 
         if ((Intent & MovementIntent.WantToMoveBackward) != 0) {
-            tryMovingInDirection(playerIndex, Vector3.back, Speed, p);
+            tryMovingInDirection(playerIndex, Vector3.right, Speed, p);
         }
 
         if ((Intent & MovementIntent.WantToMoveLeft) != 0) {
-            tryMovingInDirection(playerIndex, Vector3.left, Speed, p);
+            tryMovingInDirection(playerIndex, Vector3.back, Speed, p);
         }
         if ((Intent & MovementIntent.WantToMoveRight) != 0) {
-            tryMovingInDirection(playerIndex, Vector3.right, Speed, p);
+            tryMovingInDirection(playerIndex, Vector3.forward, Speed, p);
         }
         Portal(p.P1,0,p.XSize-1,0,p.ZSize-1);
         Portal(p.P2,0,p.XSize-1,0,p.ZSize-1);
