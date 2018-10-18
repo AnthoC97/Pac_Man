@@ -25,44 +25,46 @@ public class PlayerSelection : MonoBehaviour {
 		}
 		ListText[IdAgent].SetActive(true);
 	}
-	public void Nextid(int IdAgent)
+	private int Nextid(int IdAgent)
 	{
 		if (IdAgent < NbChoix-1)
 		{
 			IdAgent++;
 		}
 		CheckId(IdAgent);
+		return IdAgent;
 	}
 
 	public void NextButton()
 	{
 		if (IDPlayer == 1)
 		{
-			Nextid(GameEngine.PlayerOneAgentId);
+			GameEngine.PlayerOneAgentId = Nextid(GameEngine.PlayerOneAgentId);
 		}
 		else if (IDPlayer == 2)
 		{
-			Nextid(GameEngine.PlayerTwoAgentId);
+			GameEngine.PlayerTwoAgentId = Nextid(GameEngine.PlayerTwoAgentId);
 		}
 	}
 
-	public void Previd(int IdAgent)
+	private int Previd(int IdAgent)
 	{
 		if (IdAgent > 0)
 		{
 			IdAgent--;
 		}
 		CheckId(IdAgent);
+		return IdAgent;
 	}
 	public void PreviousButton()
 	{
 		if (IDPlayer == 1)
 		{
-			Previd(GameEngine.PlayerOneAgentId);
+			GameEngine.PlayerOneAgentId = Previd(GameEngine.PlayerOneAgentId);
 		}
 		else if (IDPlayer == 2)
 		{
-			Previd(GameEngine.PlayerTwoAgentId);
+			GameEngine.PlayerTwoAgentId = Previd(GameEngine.PlayerTwoAgentId);
 		}
 	}
 }
