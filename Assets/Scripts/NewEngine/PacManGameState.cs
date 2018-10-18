@@ -11,9 +11,9 @@ public class PacManGameState{
     private bool P1Killer, P2Killer, GumActive = false;
 
     //Constructeur
-    public PacManGameState(int x, int z, Vector3 p1, Vector3 p2, List<Transform> ListObstacle, List<Transform> ListDoors)
-    {
-        // Initialisation à 0 
+    public PacManGameState(int x, int z, Vector3 p1, Vector3 p2, List<Transform> ListObstacle, List<Transform> ListDoors) {
+        EtatCase = new int[x, z];
+        // Initialisation à 0
         for (int i = 0; i < x; i++)
         {
             for (int j = 0; j < z; j++)
@@ -100,7 +100,7 @@ public class PacManGameState{
         }
         return new bool[3];
     }
-    
+
     /**
 	 * Returns whether passed GameObject collides with a wall
 	 */
@@ -117,7 +117,7 @@ public class PacManGameState{
                p.EtatCase[(int) (borderRight + .5), (int) (borderUp + .5)] == 1 ||
                p.EtatCase[(int) (borderRight + .5), (int) (borderDown + .5)] == 1;
     }
-    
+
     /**
 	 * Tries to move a player in a direction, cancelling movement on collision
 	 */
@@ -128,7 +128,7 @@ public class PacManGameState{
             player = prevPosition;
         }
     }
-    
+
     // Setter mouvement
     private static void IntentManagement(MovementIntent Intent, Vector3 Player, float Speed, PacManGameState p) {
         if ((Intent & MovementIntent.WantToMoveForward) != 0) {
