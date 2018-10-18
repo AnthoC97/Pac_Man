@@ -41,6 +41,9 @@ public class ButtonPlayScript : MonoBehaviour
 	{
 		PMGES.gs.SetP1(P1Init);
 		PMGES.gs.SetP2(P2Init);
+		PMGES.gs.SetBoolEndGame(false);
+		PMGES.gs.SetBoolP1Winner(false);
+		PMGES.gs.SetBoolP2Winner(false);
 		PMGES.gs.SetBoolP1(false);
 		PMGES.gs.SetBoolP2(false);
 		WinOne.SetActive(false);

@@ -14,6 +14,9 @@ public class ButtonScript : MonoBehaviour
 	
 	[Header("Nombre de LevelDesign")]
 	[SerializeField] private int NbChoix;
+	[Header("Left et Right Button")]
+	[SerializeField] private GameObject Prev;
+	[SerializeField] private GameObject Next;
 
 	private int indLevel = 0;
 
@@ -40,6 +43,7 @@ public class ButtonScript : MonoBehaviour
 			indLevel++;
 			Bnext = true;
 		}
+		Prev.SetActive(true);
 	}
 
 	public void PreviousLevel()
@@ -49,6 +53,7 @@ public class ButtonScript : MonoBehaviour
 			indLevel--;
 			Bprev = true;
 		}
+		Next.SetActive(true);
 	}
 	
 	public void LoadGameScene()
@@ -67,8 +72,12 @@ public class ButtonScript : MonoBehaviour
 	{
 		if (Bnext)
 		{
-			ListDesign.position += new Vector3(0,0,10) * Time.deltaTime;
-			if (ListDesign.position.z >= 29*indLevel)
+			if (indLevel == NbChoix-1)
+			{
+				Next.SetActive(false);
+			}
+			ListDesign.position += new Vector3(0,0,13) * Time.deltaTime;
+			if (ListDesign.position.z >= 31.5f*indLevel)
 			{
 				Bnext = false;
 			}
@@ -76,9 +85,13 @@ public class ButtonScript : MonoBehaviour
 		else if (Bprev)
 		{
 			ListDesign.position -= new Vector3(0,0,10) * Time.deltaTime;
-			if (ListDesign.position.z <= 29*indLevel)
+			if (ListDesign.position.z <= 31.5f*indLevel)
 			{
 				Bprev = false;
+			}
+			if (indLevel == 0)
+			{
+				Prev.SetActive(false);
 			}
 		}
 	}
