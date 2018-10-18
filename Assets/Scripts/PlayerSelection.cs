@@ -10,39 +10,59 @@ public class PlayerSelection : MonoBehaviour {
 	[SerializeField] private int NbChoix;
 	
 	[Header("Player attribué")]
-	[SerializeField] private IntentScript Player;
+	[SerializeField] private PacManGameEngineScript GameEngine;
+
+	[SerializeField]private int IDPlayer = 1;
 
 	[Header("Texte Affiché")] [SerializeField]
 	private List<GameObject> ListText;
 
-	private void CheckId()
+	private void CheckId(int IdAgent)
 	{
 		foreach (GameObject GO in ListText)
 		{
 			GO.SetActive(false);
 		}
-		ListText[Player.PlayerIndex].SetActive(true);
+		ListText[IdAgent].SetActive(true);
 	}
-	public void Nextid()
+	public void Nextid(int IdAgent)
 	{
-		if (Player.PlayerIndex < NbChoix-1)
+		if (IdAgent < NbChoix-1)
 		{
-			Player.PlayerIndex++;
+			IdAgent++;
 		}
-		CheckId();
+		CheckId(IdAgent);
 	}
 
-	public void Previd()
+	public void NextButton()
 	{
-		if (Player.PlayerIndex > 0)
+		if (IDPlayer == 1)
 		{
-			Player.PlayerIndex--;
+			Nextid(GameEngine.PlayerOneAgentId);
 		}
-		CheckId();
+		else if (IDPlayer == 2)
+		{
+			Nextid(GameEngine.PlayerTwoAgentId);
+		}
 	}
-	
-	private void Start()
+
+	public void Previd(int IdAgent)
 	{
-		Player.PlayerIndex = 0;
+		if (IdAgent > 0)
+		{
+			IdAgent--;
+		}
+		CheckId(IdAgent);
+	}
+	public void PreviousButton()
+	{
+		if (IDPlayer == 1)
+		{
+			Previd(GameEngine.PlayerOneAgentId);
+		}
+		else if (IDPlayer == 2)
+		{
+			Previd(GameEngine.PlayerTwoAgentId);
+		}
 	}
 }

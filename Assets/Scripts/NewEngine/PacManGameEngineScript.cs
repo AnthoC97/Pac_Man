@@ -9,8 +9,10 @@ public enum Agents
     humanPlayerAgent = 2,
 }
 
-public class PacManGameEngineScript : MonoBehaviour {
+public class PacManGameEngineScript : MonoBehaviour
+{
 
+    public int PlayerOneAgentId, PlayerTwoAgentId = 0;
     private PacManRunner runner;
     private IAgent agentP1, agentP2;
     private PacManGameState gs;
@@ -30,7 +32,7 @@ public class PacManGameEngineScript : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //A connecter avec l'interface
-        InitializeGame(1,1);
+        InitializeGame(PlayerOneAgentId,PlayerTwoAgentId);
 	}
 
 	// Update is called once per frame

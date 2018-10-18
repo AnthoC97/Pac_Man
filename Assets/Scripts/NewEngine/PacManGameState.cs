@@ -19,7 +19,7 @@ public class PacManGameState{
     private bool P1Killer, P2Killer, GumActive = false;
 
     //Constructeur
-    public PacManGameState(int x, int z, Vector3 p1, Vector3 p2, Vector3 gumball, List<Transform> ListObstacle, List<Transform> ListDoors)
+    public PacManGameState(int x, int z, Vector3 p1, Vector3 p2, List<Transform> ListObstacle, List<Transform> ListDoors)
     {
         // Initialisation à 0 
         for (int i = 0; i < x; i++)
@@ -41,10 +41,10 @@ public class PacManGameState{
         }
         P1 = p1;
         P2 = p2;
-        GumBall = gumball;
         P1Killer = false;
         P2Killer = false;
         GumActive = false;
+        GumBall = this.RandGumball();
     }
         // Ensemble des Getteurs
     // Copie du GameState
