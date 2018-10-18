@@ -2,6 +2,7 @@
  * Authors: Bastien PERROTEAU
  */
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class PacManGameState{
     private Vector3 P1, P2, GumBall;
     private bool P1Killer, P2Killer, GumActive = false;
     private int XSize, ZSize;
+    private bool P1Winner, P2Winner, GameEnd = false;
 
     //Constructeur
     public PacManGameState(int x, int z, Vector3 p1, Vector3 p2, List<Transform> ListObstacle, List<Transform> ListDoors)
@@ -42,6 +44,9 @@ public class PacManGameState{
         P2Killer = false;
         GumActive = false;
         GumBall = this.RandGumball();
+        this.P1Winner = false;
+        this.P2Winner = false;
+        this.GameEnd = false;
     }
     // Copie du GameState
     public PacManGameState(PacManGameState PMGS)
@@ -64,6 +69,9 @@ public class PacManGameState{
         this.P2Killer = PMGS.P2Killer;
         this.GumActive = PMGS.GumActive;
         this.GumBall = PMGS.GumBall;
+        this.P1Winner = PMGS.P1Winner;
+        this.P2Winner = PMGS.P2Winner;
+        this.GameEnd = PMGS.GameEnd;
 
     }
 
@@ -88,7 +96,43 @@ public class PacManGameState{
     {
         this.P2Killer = bl;
     }
+    // Set Position Player
+    public void SetPositionForPlayer(int p, Vector3 position) {
+        if (p == 0) {
+            P1 = position;
+        }
+        else if (p == 1) {
+            P2 = position;
+        }
+    }
+    // Set position Gumball
+    public void SetPositionGumball(int gx, int gy, int gz)
+    {
+        GumBall = new Vector3(gx,gy,gz);
+    }
+    // Set GumStatus
+    public void SetGumStatus(bool bl)
+    {
+        this.GumActive = bl;
+    }
+    // Set P1Winner
+    public void SetBoolP1Winner(bool bl)
+    {
+        this.P1Winner = bl;
+    }
+    // Set P2Winner
+    public void SetBoolP2Winner(bool bl)
+    {
+        this.P2Winner = bl;
+    }
+    // Set P1Winner
+    public void SetBoolEndGame(bool bl)
+    {
+        this.GameEnd = bl;
+    }
 
+        // Ensemble des Getteurs
+    //Get de Position du Player
     public Vector3 GetPositionForPlayer(int p) {
         if (p == 0) {
             return P1;
@@ -99,26 +143,6 @@ public class PacManGameState{
 
         return Vector3.zero;
     }
-    public void SetPositionForPlayer(int p, Vector3 position) {
-        if (p == 0) {
-            P1 = position;
-        }
-        else if (p == 1) {
-            P2 = position;
-        }
-    }
-
-    public void SetPositionGumball(int gx, int gy, int gz)
-    {
-        GumBall = new Vector3(gx,gy,gz);
-    }
-    // Set GumStatus
-    public void SetGumStatus(bool bl)
-    {
-        this.GumActive = bl;
-    }
-
-        // Ensemble des Getteurs
     // Récupérer P1
     public Vector3 GetP1Vector()
     {
@@ -173,7 +197,7 @@ public class PacManGameState{
             IntentManagement(action1, 0, Speed,p);
             IntentManagement(action2, 1, Speed,p);
         }
-        return new bool[3];
+        return new bool[3] {p.P1Winner, p.P2Winner, p.GameEnd};
     }
 
     /**

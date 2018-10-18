@@ -90,6 +90,8 @@ public class PacManGameEngineScript : MonoBehaviour
 	            WinOne.SetActive(true);
 	            LoseTwo.SetActive(true);
 	            EndMenu.SetActive(true);
+		        gs.SetBoolEndGame(true);
+		        gs.SetBoolP1Winner(true);
 	        }
 	        else if(gs.GetP2Status())
 	        {
@@ -97,6 +99,8 @@ public class PacManGameEngineScript : MonoBehaviour
 	            WinTwo.SetActive(true);
 	            LoseOne.SetActive(true);
 	            EndMenu.SetActive(true);
+		        gs.SetBoolEndGame(true);
+		        gs.SetBoolP2Winner(true);
 	        }
 	    }
 	    // Test contact avec GumBall
