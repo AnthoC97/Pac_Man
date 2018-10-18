@@ -176,10 +176,10 @@ public class PacManGameState{
 	 */
     private static bool CollidesWithWalls(Vector3 player, PacManGameState p)
     {
-        float borderLeft = player.x - 0.375f / 2;
-        float borderRight = player.x + 0.375f / 2;
-        float borderUp = player.z - 0.375f / 2;
-        float borderDown = player.z + 0.375f / 2;
+        float borderLeft = player.x - 0.375f;
+        float borderRight = player.x + 0.375f;
+        float borderUp = player.z - 0.375f;
+        float borderDown = player.z + 0.375f;
 
         // Works because we are axis aligned and player is not wider than walls
         return p.EtatCase[(int) (borderLeft + .5), (int) (borderUp + .5)] == 1 ||
