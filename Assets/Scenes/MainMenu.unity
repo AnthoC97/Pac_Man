@@ -476,9 +476,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ListDesign: {fileID: 848859745}
-  NbChoix: 0
-  Prev: {fileID: 0}
-  Next: {fileID: 0}
+  NbChoix: 1
+  Prev: {fileID: 848859744}
+  Next: {fileID: 848859744}
 --- !u!1 &1103548678
 GameObject:
   m_ObjectHideFlags: 0
