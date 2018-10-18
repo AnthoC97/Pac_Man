@@ -24,7 +24,12 @@ public class PacManRunner{
         var action1 = agent1.Act(gs, 1);
         var action2 = agent2.Act(gs, 2);
 
-        return PacManGameState.Step(gs, action1, action2, speed);
+        bool[] frameResult = PacManGameState.Step(gs, action1, action2, speed);
+
+        agent1.Obs((frameResult[0] ? 1F : 0F), frameResult[2]);
+        agent1.Obs((frameResult[1] ? 1F : 0F), frameResult[2]);
+
+        return frameResult;
     }
 
     public PacManGameState GetState() {
