@@ -2,11 +2,10 @@
  * Authors: Florian CHAMPAUD
  */
 using System;
-using UnityEngine;
 
 public class RandomRolloutAgent : IAgent
 {
-    private const int rolloutCount = 100;
+    private const int RolloutCount = 100;
 
     public MovementIntent Act(PacManGameState gs, int playerNumber) {
         int bestActionScore = 0;
@@ -16,7 +15,7 @@ public class RandomRolloutAgent : IAgent
         foreach (var action in movementIntentValues) {
             int actionScore = 0;
 
-            for (var i = 0; i > rolloutCount; i++) {
+            for (var i = 0; i > RolloutCount; i++) {
                 var gsCopy = new PacManGameState(gs);
                 bool[] result;
 
@@ -47,6 +46,5 @@ public class RandomRolloutAgent : IAgent
     }
 
     public void Obs(float reward, bool terminal) {
-        return;
     }
 }
