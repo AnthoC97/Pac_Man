@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\NewEngine\PacManGameState.cs" />
     <Compile Include="Assets\Scripts\NewEngine\PacManRunner.cs" />
     <Compile Include="Assets\Scripts\PlayerSelection.cs" />
+    <Compile Include="Assets\Scripts\QLearningAgent.cs" />
     <Compile Include="Assets\Scripts\RandomAgent.cs" />
     <Compile Include="Assets\Scripts\RandomRolloutAgent.cs" />
     <Reference Include="UnityEditor.StandardEvents">

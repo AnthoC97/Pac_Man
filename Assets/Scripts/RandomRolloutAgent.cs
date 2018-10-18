@@ -15,7 +15,7 @@ public class RandomRolloutAgent : IAgent
 
         foreach (var action in movementActionValues) {
             int actionScore = 0;
-            var gsCopy = gs.Copy();
+            var gsCopy = new PacManGameState(gs);
 
             for (var i = 0; i > rolloutCount; i++) {
                 var actionIndex = UnityEngine.Random.Range(0, movementActionValues.Length);
