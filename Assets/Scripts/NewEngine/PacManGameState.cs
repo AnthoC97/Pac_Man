@@ -219,28 +219,29 @@ public class PacManGameState{
         if ((Intent & MovementIntent.WantToMoveRight) != 0) {
             tryMovingInDirection(playerIndex, Vector3.forward, Speed, p);
         }
-        Portal(p.P1,0,p.XSize-1,0,p.ZSize-1);
-        Portal(p.P2,0,p.XSize-1,0,p.ZSize-1);
+        p.P1 = Portal(p.P1,0.0f,(float)p.XSize - 1.0f,0.0f,(float)p.ZSize - 1.0f);
+        p.P2 = Portal(p.P2,0.0f,(float)p.XSize - 1.0f,0.0f,(float)p.ZSize - 1.0f);
     }
     // Passage de Portail
-    private static void Portal(Vector3 Player, int NorthX, int SouthX, int EastZ, int WestZ)
+    private static Vector3 Portal(Vector3 Player, float NorthX, float SouthX, float EastZ, float WestZ)
     {
         if (WestZ <= Player.z + (0.375f / 2))
         {
-            Player = new Vector3(Player.x,Player.y,EastZ + (0.375f));
+            return new Vector3(Player.x,Player.y,EastZ + (0.375f));
         }
         else if (EastZ >= Player.z - (0.375f / 2))
         {
-            Player = new Vector3(Player.x,Player.y,WestZ - (0.375f));
+            return new Vector3(Player.x,Player.y,WestZ - (0.375f));
         }
         else if (SouthX <= Player.x + (0.375f / 2))
         {
-            Player= new Vector3(NorthX + (0.375f),Player.y,Player.z);
+            return new Vector3(NorthX + (0.375f),Player.y,Player.z);
         }
         else if (NorthX >= Player.x - (0.375f / 2))
         {
-            Player = new Vector3(SouthX - (0.375f),Player.y,Player.z);
+            return new Vector3(SouthX - (0.375f), Player.y, Player.z);
         }
+        else return Player;
     }
     // Random Gumball Position
     private Vector3 RandGumball()
