@@ -59,7 +59,7 @@ public class ButtonScript : MonoBehaviour
 		}
 		else if (indLevel == 1)
 		{
-			SceneManager.LoadScene("GameScene");
+			SceneManager.LoadScene("GameScene2");
 		}
 	}
 
