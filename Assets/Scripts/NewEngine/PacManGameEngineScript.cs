@@ -8,7 +8,7 @@ public class PacManGameEngineScript : MonoBehaviour
     public int PlayerOneAgentId, PlayerTwoAgentId = 0;
     private PacManRunner runner;
     private IAgent agentP1, agentP2;
-    private PacManGameState gs;
+    public PacManGameState gs;
     private float speed = 4;
 
     [Header("Listes")]
@@ -52,7 +52,7 @@ public class PacManGameEngineScript : MonoBehaviour
     // Use this for initialization
     void Start () {
         //A connecter avec l'interface
-        InitializeGame(PlayerOneAgentId,PlayerTwoAgentId);
+        //InitializeGame(PlayerOneAgentId,PlayerTwoAgentId);
 	}
 
 	// Update is called once per frame
@@ -74,7 +74,7 @@ public class PacManGameEngineScript : MonoBehaviour
 
 	}
 
-    private void InitializeGame(int agent1, int agent2)
+    public void InitializeGame(int agent1, int agent2)
     {
         switch (agent1)
         {
@@ -114,5 +114,6 @@ public class PacManGameEngineScript : MonoBehaviour
         runner = new PacManRunner(agentP1, agentP2, gs, speed);
         InGame = true;
     }
+    private void LaunchGame(){}
 
 }

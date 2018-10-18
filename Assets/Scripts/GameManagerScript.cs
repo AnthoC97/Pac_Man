@@ -9,7 +9,7 @@ using UnityEngine;
 public class GameManagerScript : MonoBehaviour
 {
 	[Header("GameState")]
-	[SerializeField] private GameState GS;
+	[SerializeField] public GameState GS;
 
 	[Header("Player/IA One")]
 	[SerializeField] private GameObject WinOne;

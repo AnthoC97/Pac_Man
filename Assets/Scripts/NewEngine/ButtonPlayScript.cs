@@ -8,42 +8,50 @@ using UnityEngine;
 public class ButtonPlayScript : MonoBehaviour
 {
 
+	[Header("Panel de début")]
 	[SerializeField] private GameObject PanelStart;
-	[SerializeField] private PacManGameState PGS;
+	
+	[Header("Game Engine")]
 	[SerializeField] private PacManGameEngineScript PMGES;
+	
+	[Header("Affichage Victoire")]
 	[SerializeField] private GameObject WinOne;
 	[SerializeField] private GameObject WinTwo;
+	
+	[Header("Affichage Défaite")]
 	[SerializeField] private GameObject LoseOne;
 	[SerializeField] private GameObject LoseTwo;
+	
+	[Header("Panel de fin")]
 	[SerializeField] private GameObject EndMenu;
 	
 	private Vector3 P1Init, P2Init;
+	
 	public void ButtonPlay()
 	{
+		PMGES.InitializeGame(PMGES.PlayerOneAgentId,PMGES.PlayerTwoAgentId);
+		//P1Init = PMGES.gs.GetP1Vector();
+		//P2Init = PMGES.gs.GetP2Vector();
+		Debug.Log("Hey");
+		
 		PanelStart.SetActive(false);
-		PGS.RandomizeGumball();
-		PGS.SetGumStatus(true);
-		PMGES.InGame = true;
+		//PMGES.gs.RandomizeGumball();
+		//PMGES.gs.SetGumStatus(true);
 	}
 
 	public void ButtonReplay()
 	{
-		PGS.SetP1(P1Init);
-		PGS.SetP2(P2Init);
-		PGS.SetBoolP1(false);
-		PGS.SetBoolP2(false);
+		PMGES.gs.SetP1(P1Init);
+		PMGES.gs.SetP2(P2Init);
+		PMGES.gs.SetBoolP1(false);
+		PMGES.gs.SetBoolP2(false);
 		WinOne.SetActive(false);
 		WinTwo.SetActive(false);
 		LoseOne.SetActive(false);
 		LoseTwo.SetActive(false);
-		PGS.RandomizeGumball();
-		PGS.SetGumStatus(true);
+		PMGES.gs.RandomizeGumball();
+		PMGES.gs.SetGumStatus(true);
 		EndMenu.SetActive(false);
 		PMGES.InGame = true;
-	}
-
-	private void Start()
-	{
-		P1Init = PGS.GetP1Vector();
 	}
 }

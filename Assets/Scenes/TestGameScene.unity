@@ -360,6 +360,7 @@ GameObject:
   m_Component:
   - component: {fileID: 256546734}
   - component: {fileID: 256546735}
+  - component: {fileID: 256546736}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -396,6 +397,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ListDesign: {fileID: 256546734}
   NbChoix: 1
+--- !u!114 &256546736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 256546733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd20d79f6f2ba84b82ce0e296865430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PanelStart: {fileID: 654177809}
+  PMGES: {fileID: 1212408280}
+  WinOne: {fileID: 1285055054}
+  WinTwo: {fileID: 1593756708}
+  LoseOne: {fileID: 1996866882}
+  LoseTwo: {fileID: 1837110695}
+  EndMenu: {fileID: 783016270}
 --- !u!1 &300609361
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,8 +643,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Nextid
+      - m_Target: {fileID: 920263626}
+        m_MethodName: NextButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -869,8 +888,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Previd
+      - m_Target: {fileID: 920263626}
+        m_MethodName: PreviousButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -933,7 +952,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &654177810
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1185,7 +1204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NbChoix: 6
-  GameEngine: {fileID: 0}
+  GameEngine: {fileID: 1212408280}
   IDPlayer: 2
   ListText:
   - {fileID: 1359780722}
@@ -1542,8 +1561,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Nextid
+      - m_Target: {fileID: 1379433099}
+        m_MethodName: NextButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3273,7 +3292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NbChoix: 6
-  GameEngine: {fileID: 0}
+  GameEngine: {fileID: 1212408280}
   IDPlayer: 1
   ListText:
   - {fileID: 1421187194}
@@ -3511,7 +3530,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 256546736}
         m_MethodName: ButtonReplay
         m_Mode: 1
         m_Arguments:
@@ -3924,8 +3943,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ButtonPlay
+      - m_Target: {fileID: 256546736}
+        m_MethodName: ButtonReplay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4657,8 +4676,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Previd
+      - m_Target: {fileID: 1379433099}
+        m_MethodName: PreviousButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
