@@ -17,13 +17,37 @@ public class PacManGameEngineScript : MonoBehaviour {
     private bool inGame = false;
     private float speed = 4;
 
+    [Header("Listes")]
+    [SerializeField] private List<Transform> Obstacles;
+    [SerializeField] public List<Transform> Doors;
+
     [Header("Taille Map")]
     [SerializeField] private int x;
     [SerializeField] private int z;
 
-    [Header("Players")]
-    [SerializeField] private GameObject player1;
-    [SerializeField] private GameObject player2;
+    public int[,] EtatCase;
+
+    [Header("Player/IA One")]
+    [SerializeField] public GameObject PlayerOne;
+    [SerializeField] private Material MatOne;
+
+    [Header("Player/IA Two")]
+    [SerializeField] public GameObject PlayerTwo;
+    [SerializeField] private Material MaTwo;
+
+    [Header("Killer")]
+    [SerializeField] private Material MatKiller;
+    [SerializeField] public float TimeKiller;
+    public float Timetokill;
+
+    [Header("Speed")]
+    [SerializeField] private float WalkSpeed;
+
+    [Header("GumBall")]
+    [SerializeField] public GameObject GumBall;
+
+    [Header("Jeu lancé")]
+    public bool InGame = false;
 
 
     private void Awake()
@@ -44,14 +68,14 @@ public class PacManGameEngineScript : MonoBehaviour {
             return;
         }
         //Run a frame in the runner
-        bool [,,] getFrame = runner.runFrame()
-        gs =  runner.getState()
-        player1.transform.position =  
-        player2.transform.position =
-        if (getFrame[2])
+        bool[] frameResult = runner.RunFrame();
+        gs = runner.GetState();
+        PlayerOne.transform.position = gs.GetP1Vector();
+        PlayerTwo.transform.position = gs.GetP2Vector();
+        if (frameResult[2])//if state is terminal
         {
             inGame = false;
-            //Affichage du joueur/agent gagnant et perdant
+            //TODO Affichage du joueur/agent gagnant et perdant
         }
         
 	}
@@ -67,7 +91,7 @@ public class PacManGameEngineScript : MonoBehaviour {
                 agentP1 = new RandomRolloutAgent();
                 break;
             case 2:
-                agentP1 = new HumanPlayerAgent();
+                agentP1 = new HumanPlayerAgent(PlayerOne.GetComponent<HumanPlayerScript>());
                 break;
         }
         switch (agent2)
@@ -79,10 +103,10 @@ public class PacManGameEngineScript : MonoBehaviour {
                 agentP2 = new RandomRolloutAgent();
                 break;
             case 2:
-                agentP2 = new HumanPlayerAgent();
+                agentP2 = new HumanPlayerAgent(PlayerTwo.GetComponent<HumanPlayerScript>());
                 break;
         }
-        gs = new PacManGameState(x, z);
+        gs = new PacManGameState(x, z, PlayerOne.transform.position, PlayerTwo.transform.position, Obstacles, Doors);
         runner = new PacManRunner(agentP1, agentP2, gs, speed);
         inGame = true;
     }
