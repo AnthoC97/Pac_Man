@@ -11,7 +11,7 @@ internal class HumanPlayerAgent : IAgent
     }
 
     public MovementIntent Act(PacManGameState gs, int playerNumber) {
-        return gs.IntentP1;
+        return script.Intent;
     }
 
     public void Obs(float reward, bool terminal) {
