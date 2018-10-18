@@ -11,21 +11,27 @@ public class RandomRolloutAgent : IAgent
     public MovementIntent Act(PacManGameState gs, int playerNumber) {
         int bestActionScore = 0;
         MovementIntent bestAction = 0;
-        var movementActionValues = (MovementIntent[]) Enum.GetValues(typeof(MovementIntent));
+        var movementIntentValues = (MovementIntent[]) Enum.GetValues(typeof(MovementIntent));
 
-        foreach (var action in movementActionValues) {
+        foreach (var action in movementIntentValues) {
             int actionScore = 0;
-            var gsCopy = new PacManGameState(gs);
 
             for (var i = 0; i > rolloutCount; i++) {
-                var actionIndex = UnityEngine.Random.Range(0, movementActionValues.Length);
-                MovementIntent randAction = (MovementIntent) movementActionValues.GetValue(actionIndex);
+                var gsCopy = new PacManGameState(gs);
+                bool[] result;
 
-                var result = PacManGameState.Step(gsCopy, action, randAction,4);
+                var randActionIndex = UnityEngine.Random.Range(0, movementIntentValues.Length);
+                MovementIntent randAction = (MovementIntent) movementIntentValues.GetValue(randActionIndex);
 
-                if (playerNumber > 1) { // Player number out of range
-                    UnityEngine.Debug.LogError("ERROR: playerNumber out of range [0; 1]");
-                    return bestAction;
+                result = PacManGameState.Step(gsCopy, action, randAction, 4);
+
+                while (!result[2]) { // While not terminal state
+                    randActionIndex = UnityEngine.Random.Range(0, movementIntentValues.Length);
+                    MovementIntent randAction1 = (MovementIntent) movementIntentValues.GetValue(randActionIndex);
+                    randActionIndex = UnityEngine.Random.Range(0, movementIntentValues.Length);
+                    MovementIntent randAction2 = (MovementIntent) movementIntentValues.GetValue(randActionIndex);
+
+                    result = PacManGameState.Step(gsCopy, randAction1, randAction2, 4);
                 }
 
                 actionScore += result[playerNumber] ? 1 : 0;
