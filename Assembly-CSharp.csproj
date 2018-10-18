@@ -60,6 +60,8 @@
     <Compile Include="Assets\Scripts\GameManagerScript.cs" />
     <Compile Include="Assets\Scripts\GameState.cs" />
     <Compile Include="Assets\Scripts\IntentScript.cs" />
+    <Compile Include="Assets\Scripts\NewEngine\ButtonPlayScript.cs" />
+    <Compile Include="Assets\Scripts\NewEngine\Enums.cs" />
     <Compile Include="Assets\Scripts\NewEngine\HumanPlayerAgent.cs" />
     <Compile Include="Assets\Scripts\NewEngine\HumanPlayerScript.cs" />
     <Compile Include="Assets\Scripts\NewEngine\IAgent.cs" />

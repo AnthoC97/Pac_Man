@@ -2,13 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Agents
-{
-    randomAgent = 0,
-    randomRolloutAgent = 1,
-    humanPlayerAgent = 2,
-}
-
 public class PacManGameEngineScript : MonoBehaviour
 {
 
@@ -87,25 +80,35 @@ public class PacManGameEngineScript : MonoBehaviour
         switch (agent1)
         {
             case 0:
-                agentP1 = new RandomAgent();
+                PlayerOne.GetComponent<HumanPlayerScript>().ControlType = 0;
+                agentP1 = new HumanPlayerAgent(PlayerOne.GetComponent<HumanPlayerScript>());
                 break;
             case 1:
-                agentP1 = new RandomRolloutAgent();
+                PlayerOne.GetComponent<HumanPlayerScript>().ControlType = 1;
+                agentP1 = new HumanPlayerAgent(PlayerOne.GetComponent<HumanPlayerScript>());
                 break;
             case 2:
-                agentP1 = new HumanPlayerAgent(PlayerOne.GetComponent<HumanPlayerScript>());
+                agentP1 = new RandomAgent();
+                break;
+            case 3:
+                agentP1 = new RandomRolloutAgent();
                 break;
         }
         switch (agent2)
         {
             case 0:
-                agentP2 = new RandomAgent();
+                PlayerTwo.GetComponent<HumanPlayerScript>().ControlType = 0;
+                agentP2 = new HumanPlayerAgent(PlayerTwo.GetComponent<HumanPlayerScript>());
                 break;
             case 1:
-                agentP2 = new RandomRolloutAgent();
+                PlayerTwo.GetComponent<HumanPlayerScript>().ControlType = 1;
+                agentP2 = new HumanPlayerAgent(PlayerTwo.GetComponent<HumanPlayerScript>());
                 break;
             case 2:
-                agentP2 = new HumanPlayerAgent(PlayerTwo.GetComponent<HumanPlayerScript>());
+                agentP2 = new RandomAgent();
+                break;
+            case 3:
+                agentP2 = new RandomRolloutAgent();
                 break;
         }
         gs = new PacManGameState(x, z, PlayerOne.transform.position, PlayerTwo.transform.position, Obstacles, Doors);
