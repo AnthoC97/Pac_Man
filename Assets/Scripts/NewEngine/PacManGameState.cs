@@ -149,12 +149,12 @@ public class PacManGameState{
     // Random Gumball Position
     private Vector3 RandGumball()
     {
-        int X = UnityEngine.Random.Range(0, EtatCase.Length);
-        int Z = UnityEngine.Random.Range(0, EtatCase.Length);
+        int X = UnityEngine.Random.Range(0, /*EtatCase.Length*/ 17); // TODO FIX
+        int Z = UnityEngine.Random.Range(0, /*EtatCase.Length*/ 17);
         while (EtatCase[X,Z] != 0)
         {
-            X = UnityEngine.Random.Range(0, EtatCase.Length);
-            Z = UnityEngine.Random.Range(0, EtatCase.Length);
+            X = UnityEngine.Random.Range(0, /*EtatCase.Length*/ 17);
+            Z = UnityEngine.Random.Range(0, /*EtatCase.Length*/ 17);
         }
         return new Vector3(X,0.3f,Z);
     }
