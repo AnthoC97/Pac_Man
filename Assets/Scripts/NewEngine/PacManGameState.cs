@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿/**
+ * Authors: Bastien PERROTEAU
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +19,7 @@ public class PacManGameState{
     private bool P1Killer, P2Killer, GumActive = false;
 
     //Constructeur
-    public PacManGameState(int x, int z, Vector3 p1, Vector3 p2, Vector3 gumball, bool p1k, bool p2k, bool gumact, List<Transform> ListObstacle, List<Transform> ListDoors)
+    public PacManGameState(int x, int z, Vector3 p1, Vector3 p2, Vector3 gumball, List<Transform> ListObstacle, List<Transform> ListDoors)
     {
         // Initialisation à 0 
         for (int i = 0; i < x; i++)
@@ -39,10 +42,11 @@ public class PacManGameState{
         P1 = p1;
         P2 = p2;
         GumBall = gumball;
-        P1Killer = p1k;
-        P2Killer = p2k;
-        GumActive = gumact;
+        P1Killer = false;
+        P2Killer = false;
+        GumActive = false;
     }
+        // Ensemble des Getteurs
     // Copie du GameState
     public PacManGameState Copy()
     {
@@ -87,8 +91,21 @@ public class PacManGameState{
     // Récupère Intent et Applique changement de position
     public static int Step(PacManGameState p, MovementIntent action1, MovementIntent action2, float Speed)
     {
-        IntentManagement(action1, p.P1, Speed,p);
-        IntentManagement(action2, p.P2, Speed,p);
+        if (p.P1Killer)
+        {
+            IntentManagement(action1, p.P1, Speed * 1.2f,p);
+            IntentManagement(action2, p.P2, Speed,p);
+        }
+        else if (p.P2Killer)
+        {
+            IntentManagement(action1, p.P1, Speed,p);
+            IntentManagement(action2, p.P2, Speed * 1.2f,p);
+        }
+        else
+        {
+            IntentManagement(action1, p.P1, Speed,p);
+            IntentManagement(action2, p.P2, Speed,p);
+        }
         return 0;
     }
     
@@ -136,5 +153,22 @@ public class PacManGameState{
         if ((Intent & MovementIntent.WantToMoveRight) != 0) {
             tryMovingInDirection(Player, Vector3.right, Speed, p);
         }
+    }
+    // Random Gumball Position
+    private Vector3 RandGumball()
+    {
+        int X = UnityEngine.Random.Range(0, EtatCase.Length);
+        int Z = UnityEngine.Random.Range(0, EtatCase.Length);
+        while (EtatCase[X,Z] != 0)
+        {
+            X = UnityEngine.Random.Range(0, EtatCase.Length);
+            Z = UnityEngine.Random.Range(0, EtatCase.Length);
+        }
+        return new Vector3(X,0.3f,Z);
+    }
+
+    public void RandomizeGumball()
+    {
+        this.GumBall = RandGumball();
     }
 }
