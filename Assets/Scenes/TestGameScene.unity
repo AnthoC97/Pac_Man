@@ -624,7 +624,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 920263626}
+      - m_Target: {fileID: 0}
         m_MethodName: Nextid
         m_Mode: 1
         m_Arguments:
@@ -869,7 +869,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 920263626}
+      - m_Target: {fileID: 0}
         m_MethodName: Previd
         m_Mode: 1
         m_Arguments:
@@ -1139,7 +1139,6 @@ GameObject:
   - component: {fileID: 920263625}
   - component: {fileID: 920263628}
   - component: {fileID: 920263627}
-  - component: {fileID: 920263626}
   m_Layer: 0
   m_Name: PanelP2
   m_TagString: Untagged
@@ -1173,26 +1172,6 @@ RectTransform:
   m_AnchoredPosition: {x: 750, y: 0}
   m_SizeDelta: {x: 400, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &920263626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 920263624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41305733827fec943a371f313b7c99d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NbChoix: 6
-  Player: {fileID: 1014963879}
-  ListText:
-  - {fileID: 1359780722}
-  - {fileID: 1034855071}
-  - {fileID: 1212893512}
-  - {fileID: 1766039157}
-  - {fileID: 827044008}
-  - {fileID: 1560613548}
 --- !u!114 &920263627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1238,7 +1217,6 @@ GameObject:
   - component: {fileID: 1014963878}
   - component: {fileID: 1014963877}
   - component: {fileID: 1014963876}
-  - component: {fileID: 1014963879}
   m_Layer: 0
   m_Name: P2
   m_TagString: Untagged
@@ -1313,21 +1291,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1014963874}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1014963879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1014963874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8299c83783d32db469d03bddddce368a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GS: {fileID: 1560977267}
-  IndPlayerOT: 2
-  PlayerIndex: 1
-  IsKiller: 0
 --- !u!1 &1034855071
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,7 +1506,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1379433099}
+      - m_Target: {fileID: 0}
         m_MethodName: Nextid
         m_Mode: 1
         m_Arguments:
@@ -1689,7 +1652,9 @@ Prefab:
       propertyPath: WalkSpeed
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114265023054917894, guid: 783d49b4b1c14b042b88be495e8e8c6c, type: 2}
+    - {fileID: 114248284166804026, guid: 783d49b4b1c14b042b88be495e8e8c6c, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 783d49b4b1c14b042b88be495e8e8c6c, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1212893512
@@ -2285,7 +2250,6 @@ GameObject:
   - component: {fileID: 1379433096}
   - component: {fileID: 1379433098}
   - component: {fileID: 1379433097}
-  - component: {fileID: 1379433099}
   m_Layer: 0
   m_Name: PanelP1
   m_TagString: Untagged
@@ -2353,26 +2317,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1379433095}
   m_CullTransparentMesh: 0
---- !u!114 &1379433099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1379433095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41305733827fec943a371f313b7c99d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NbChoix: 6
-  Player: {fileID: 1645339250}
-  ListText:
-  - {fileID: 1421187194}
-  - {fileID: 300609361}
-  - {fileID: 1787185163}
-  - {fileID: 1582250168}
-  - {fileID: 1822763001}
-  - {fileID: 188618023}
 --- !u!1 &1418259150
 GameObject:
   m_ObjectHideFlags: 0
@@ -2602,7 +2546,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1560977268}
+      - m_Target: {fileID: 0}
         m_MethodName: ButtonReplay
         m_Mode: 1
         m_Arguments:
@@ -2727,18 +2671,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 250, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1560977267 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114248284166804026, guid: 783d49b4b1c14b042b88be495e8e8c6c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1212408278}
-  m_Script: {fileID: 11500000, guid: 234bb2ad29b3e8f44a3ba014c8741567, type: 3}
---- !u!114 &1560977268 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114265023054917894, guid: 783d49b4b1c14b042b88be495e8e8c6c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1212408278}
-  m_Script: {fileID: 11500000, guid: 083ebc2de4ed966478f6a7ebd39b0050, type: 3}
 --- !u!1 &1582250168
 GameObject:
   m_ObjectHideFlags: 0
@@ -3027,7 +2959,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1560977268}
+      - m_Target: {fileID: 0}
         m_MethodName: ButtonPlay
         m_Mode: 1
         m_Arguments:
@@ -3085,7 +3017,6 @@ GameObject:
   - component: {fileID: 1645339249}
   - component: {fileID: 1645339248}
   - component: {fileID: 1645339247}
-  - component: {fileID: 1645339250}
   m_Layer: 0
   m_Name: P1
   m_TagString: Untagged
@@ -3160,21 +3091,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1645339245}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1645339250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1645339245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8299c83783d32db469d03bddddce368a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GS: {fileID: 1560977267}
-  IndPlayerOT: 1
-  PlayerIndex: 0
-  IsKiller: 0
 --- !u!1 &1766039157
 GameObject:
   m_ObjectHideFlags: 0
@@ -3762,7 +3678,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1379433099}
+      - m_Target: {fileID: 0}
         m_MethodName: Previd
         m_Mode: 1
         m_Arguments:
