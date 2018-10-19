@@ -1,5 +1,5 @@
 ﻿/**
- * Authors: Bastien PERROTEAU
+ * Authors: Bastien PERROTEAU, Florian CHAMPAUD
  */
 
 using System;
