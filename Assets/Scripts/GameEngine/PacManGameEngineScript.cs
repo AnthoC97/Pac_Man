@@ -57,6 +57,8 @@ public class PacManGameEngineScript : MonoBehaviour
     [Header("Jeu lancé")]
     public bool InGame = false;
 
+	public float RandomRNbIteration = 100;
+
 
     private void Awake()
     {
@@ -181,7 +183,7 @@ public class PacManGameEngineScript : MonoBehaviour
                 agentP1 = new RandomAgent();
                 break;
             case 3:
-                agentP1 = new RandomRolloutAgent();
+                agentP1 = new RandomRolloutAgent(RandomRNbIteration);
                 break;
         }
         switch (agent2)
@@ -198,7 +200,7 @@ public class PacManGameEngineScript : MonoBehaviour
                 agentP2 = new RandomAgent();
                 break;
             case 3:
-                agentP2 = new RandomRolloutAgent();
+                agentP2 = new RandomRolloutAgent(RandomRNbIteration);
                 break;
         }
         gs = new PacManGameState(x, z, PlayerOne.transform.position, PlayerTwo.transform.position, Obstacles, Doors);
