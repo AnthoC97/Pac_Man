@@ -212,6 +212,11 @@ public class PacManGameState{
         float borderUp = player.z - 0.375f;
         float borderDown = player.z + 0.375f;
 
+        if ((int) (borderLeft - .5) < 0 || (int) (borderRight + .5) >= p.XSize ||
+            (int) (borderUp - .5) < 0 || (int) (borderDown + .5) >= p.ZSize) {
+            return true;
+        }
+
         // Works because we are axis aligned and player is not wider than walls
         return p.EtatCase[(int) (borderLeft + .5), (int) (borderUp + .5)] == 1 ||
                p.EtatCase[(int) (borderLeft + .5), (int) (borderDown + .5)] == 1 ||
@@ -290,7 +295,7 @@ public class PacManGameState{
     {
         this.GumBall = RandGumball();
     }
-    
+
     // Calcul de distance entre 2 points
     private static float VectorDistance(Vector3 T1, Vector3 T2)
     {
