@@ -13,6 +13,12 @@ public class PacManGameState{
     private int XSize, ZSize;
     private bool P1Winner, P2Winner, GameEnd = false;
 
+    /**
+     * Empty constructor for use with CopyGS method
+     */
+    public PacManGameState() {
+    }
+
     //Constructeur
     public PacManGameState(int x, int z, Vector3 p1, Vector3 p2, List<Transform> ListObstacle, List<Transform> ListDoors)
     {
