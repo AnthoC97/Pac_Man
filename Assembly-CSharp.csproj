@@ -55,7 +55,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Agent\Agent.cs" />
     <Compile Include="Assets\Scripts\Agent\HumanPlayerAgent.cs" />
     <Compile Include="Assets\Scripts\Agent\IAgent.cs" />
     <Compile Include="Assets\Scripts\Agent\QLearningAgent.cs" />
@@ -69,9 +68,6 @@
     <Compile Include="Assets\Scripts\Menu\ButtonPlayScript.cs" />
     <Compile Include="Assets\Scripts\Menu\ButtonScript.cs" />
     <Compile Include="Assets\Scripts\Menu\PlayerSelection.cs" />
-    <Compile Include="Assets\Scripts\old\GameManagerScript.cs" />
-    <Compile Include="Assets\Scripts\old\GameState.cs" />
-    <Compile Include="Assets\Scripts\old\IntentScript.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/0_MyProject/Pacman/Pac_Man/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
