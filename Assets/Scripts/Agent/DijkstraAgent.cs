@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿/**
+ * Authors: Anthony CONTREVILLIERS
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
