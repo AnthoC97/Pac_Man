@@ -2,20 +2,23 @@
  * Authors: Florian CHAMPAUD
  */
 using System;
+using UnityEngine;
 
 public class RandomRolloutAgent : IAgent
 {
-    private const int RolloutCount = 100;
+    private const int RolloutCount = 10;
+    private const int MaxIterations = 10;
 
     public MovementIntent Act(PacManGameState gs, int playerNumber) {
         int bestActionScore = 0;
+        int j;
         MovementIntent bestAction = 0;
         var movementIntentValues = (MovementIntent[]) Enum.GetValues(typeof(MovementIntent));
 
         foreach (var action in movementIntentValues) {
             int actionScore = 0;
 
-            for (var i = 0; i > RolloutCount; i++) {
+            for (var i = 0; i < RolloutCount; i++) {
                 var gsCopy = new PacManGameState(gs);
                 bool[] result;
 
@@ -24,7 +27,7 @@ public class RandomRolloutAgent : IAgent
 
                 result = PacManGameState.Step(gsCopy, action, randAction, 4);
 
-                while (!result[2]) { // While not terminal state
+                for (j = 0; !result[2] && j < MaxIterations; j++) { // While not terminal state
                     randActionIndex = UnityEngine.Random.Range(0, movementIntentValues.Length);
                     MovementIntent randAction1 = (MovementIntent) movementIntentValues.GetValue(randActionIndex);
                     randActionIndex = UnityEngine.Random.Range(0, movementIntentValues.Length);
