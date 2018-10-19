@@ -6,7 +6,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PacManGameState{
+public class PacManGameState
+{
+    private static Vector3[] directions = new[] {Vector3.left, Vector3.right, Vector3.forward, Vector3.back};
     private int[,] EtatCase;
     private Vector3 P1, P2, GumBall;
     private bool P1Killer, P2Killer, GumActive = false;
@@ -269,9 +271,9 @@ public class PacManGameState{
     /**
 	 * Tries to move a player in a direction, cancelling movement on collision
 	 */
-    private static void tryMovingInDirection(int playerIndex, Vector3 direction, float Speed, PacManGameState p) {
+    private static void tryMovingInDirection(int playerIndex, int direction, float Speed, PacManGameState p) {
         Vector3 newPosition = p.GetPositionForPlayer(playerIndex);
-        newPosition += direction * Speed * Time.deltaTime;
+        newPosition += directions[direction] * Speed * Time.deltaTime;
 
         if (CollidesWithWalls(newPosition, p)) {
             return;
@@ -284,18 +286,18 @@ public class PacManGameState{
     private static void IntentManagement(MovementIntent Intent, int playerIndex, float Speed, PacManGameState p) {
 
         if ((Intent & MovementIntent.WantToMoveForward) != 0) {
-            tryMovingInDirection(playerIndex, new Vector3(-1,0,0), Speed, p);
+            tryMovingInDirection(playerIndex, 0, Speed, p);
         }
 
         if ((Intent & MovementIntent.WantToMoveBackward) != 0) {
-            tryMovingInDirection(playerIndex, new Vector3(1,0,0), Speed, p);
+            tryMovingInDirection(playerIndex, 1, Speed, p);
         }
 
         if ((Intent & MovementIntent.WantToMoveLeft) != 0) {
-            tryMovingInDirection(playerIndex, new Vector3(0,0,-1), Speed, p);
+            tryMovingInDirection(playerIndex, 3, Speed, p);
         }
         if ((Intent & MovementIntent.WantToMoveRight) != 0) {
-            tryMovingInDirection(playerIndex, new Vector3(0,0,1), Speed, p);
+            tryMovingInDirection(playerIndex, 2, Speed, p);
         }
         p.P1 = Portal(p.P1,0.0f,(float)p.XSize - 1.0f,0.0f,(float)p.ZSize - 1.0f);
         p.P2 = Portal(p.P2,0.0f,(float)p.XSize - 1.0f,0.0f,(float)p.ZSize - 1.0f);
