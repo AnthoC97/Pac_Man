@@ -59,18 +59,6 @@ public class PacManGameEngineScript : MonoBehaviour
 
 	public float RandomRNbIteration = 100;
 
-
-    private void Awake()
-    {
-
-    }
-
-    // Use this for initialization
-    void Start () {
-        //A connecter avec l'interface
-        //InitializeGame(PlayerOneAgentId,PlayerTwoAgentId);
-	}
-
 	// Update is called once per frame
 	void Update () {
         if (!InGame)
@@ -87,32 +75,51 @@ public class PacManGameEngineScript : MonoBehaviour
 		{
 			InGame = !InGame;
 		}
+		// Test des booléen
+		if (gs.GetGumStatus() == false)
+		{
+			Timetokill -= Time.deltaTime;
+			if (gs.GetP1Status() && GumBall.activeInHierarchy)
+			{
+				GumBall.SetActive(false);
+				Timetokill = TimeKiller;
+				gs.SetPositionGumball(-100,-100,-100);
+				GumBall.transform.position = gs.GetGumVector();
+				PlayerOne.GetComponent<Renderer>().material = MatKiller;
+			}
+			else if (gs.GetP2Status()&& GumBall.activeInHierarchy)
+			{
+				GumBall.SetActive(false);
+				Timetokill = TimeKiller;
+				gs.SetPositionGumball(-100,-100,-100);
+				GumBall.transform.position = gs.GetGumVector();
+				PlayerTwo.GetComponent<Renderer>().material = MatKiller;
+			}
+		}
+		else
+		{
+			PlayerOne.GetComponent<Renderer>().material = MatOne;
+			PlayerTwo.GetComponent<Renderer>().material = MatTwo;
+		}
 
-	    // Test contact entre sphère
-	    if (DistanceCount(PlayerOne.transform, PlayerTwo.transform) <= 0.70f)
-	    {
-	        if (gs.GetP1Status())
-	        {
-	            InGame = false;
-	            WinOne.SetActive(true);
-	            LoseTwo.SetActive(true);
-	            EndMenu.SetActive(true);
-		        gs.SetBoolEndGame(true);
-		        gs.SetBoolP1Winner(true);
-	        }
-	        else if(gs.GetP2Status())
-	        {
-	            InGame = false;
-	            WinTwo.SetActive(true);
-	            LoseOne.SetActive(true);
-	            EndMenu.SetActive(true);
-		        gs.SetBoolEndGame(true);
-		        gs.SetBoolP2Winner(true);
-	        }
-	    }
+		if (gs.getP1Winner())
+		{
+			InGame = false;
+			WinOne.SetActive(true);
+			LoseTwo.SetActive(true);
+			EndMenu.SetActive(true);
+		}
+		else if (gs.getP2Winner())
+		{
+			InGame = false;
+			WinTwo.SetActive(true);
+			LoseOne.SetActive(true);
+			EndMenu.SetActive(true);
+		}
+		
 	    // Test contact avec GumBall
-	    if (DistanceCount(PlayerOne.transform, GumBall.transform) <=
-	        GumBall.transform.localScale.x * 1.9)
+	    if (Vector3.Distance(PlayerOne.transform.position, GumBall.transform.position) <=
+	        0.5f * 1.9)
 	    {
 		    gs.SetGumStatus(false);
 		    GumBall.SetActive(false);
@@ -122,8 +129,8 @@ public class PacManGameEngineScript : MonoBehaviour
 		    GumBall.transform.position = gs.GetGumVector();
 		    PlayerOne.GetComponent<Renderer>().material = MatKiller;
 	    }
-	    else if (DistanceCount(PlayerTwo.transform, GumBall.transform) <=
-	             GumBall.transform.localScale.x * 1.9)
+	    else if (Vector3.Distance(PlayerTwo.transform.position, GumBall.transform.position) <=
+	             0.5f * 1.9)
 	    {
 		    gs.SetGumStatus(false);
 		    GumBall.SetActive(false);
@@ -133,6 +140,7 @@ public class PacManGameEngineScript : MonoBehaviour
 		    GumBall.transform.position = gs.GetGumVector();
 		    PlayerTwo.GetComponent<Renderer>().material = MatKiller;
 	    }
+	    
 		if (Timetokill <= 0)
 		{
 			Timetokill = 0.1f;
@@ -143,22 +151,11 @@ public class PacManGameEngineScript : MonoBehaviour
 			gs.SetGumStatus(true);
 			GumBall.SetActive(true);
 		}
-		if (gs.GetP1Status() || gs.GetP2Status())
-		{
-			Timetokill -= Time.deltaTime;
-		}
-		else
-		{
-			PlayerOne.GetComponent<Renderer>().material = MatOne;
-			PlayerTwo.GetComponent<Renderer>().material = MatTwo;
-		}
-
         if (frameResult[2])//if state is terminal
         {
             InGame = false;
             //TODO Affichage du joueur/agent gagnant et perdant
         }
-
 	}
     // Calcul de distance entre 2 points
     private float DistanceCount(Transform T1, Transform T2)

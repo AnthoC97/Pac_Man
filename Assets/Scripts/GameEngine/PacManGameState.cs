@@ -222,6 +222,14 @@ public class PacManGameState
     public int GetZSize() {
         return ZSize;
     }
+    public bool getP1Winner()
+    {
+        return this.P1Winner;
+    }
+    public bool getP2Winner()
+    {
+        return this.P2Winner;
+    }
 
     // Récupère Intent et Applique changement de position
     public static bool[] Step(PacManGameState p, MovementIntent action1, MovementIntent action2, float Speed)
