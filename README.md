@@ -12,3 +12,14 @@
 # Choix joueurs
 * Human Azerty : ZQSD pour se déplacer
 * Human Fleche : Fleche pour se déplacer
+
+# TODO
+*** Pause Panel
+*// Dijkstra Agent et Tabular Q
+*** More Lvl Design
+* Pacman Model
+*** Choice Color
+* Counter Debut Partie
+*** Reopen Panel Choice agent
+* Counter view KillerTime
+* More Music
