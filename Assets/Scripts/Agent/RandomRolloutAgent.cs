@@ -6,9 +6,14 @@ using UnityEngine;
 
 public class RandomRolloutAgent : IAgent
 {
-    private const int RolloutCount = 10;
+    private int RolloutCount;
     private const int MaxIterations = 10;
-    private PacManGameState gsCopy = new PacManGameState();
+    private PacManGameState gsCopy;
+
+    public RandomRolloutAgent(float rolloutCount, int xSize, int zSize) {
+        this.RolloutCount = (int) rolloutCount;
+        PacManGameState gsCopy = new PacManGameState(xSize, zSize);
+    }
 
     public MovementIntent Act(PacManGameState gs, int playerNumber) {
         int bestActionScore = 0;
