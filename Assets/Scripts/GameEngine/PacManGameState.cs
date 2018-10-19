@@ -74,6 +74,32 @@ public class PacManGameState{
         this.GameEnd = PMGS.GameEnd;
 
     }
+    // Methode Copie du GameState
+    public void CopyGS(PacManGameState PMGS)
+    {
+        this.EtatCase = new int[PMGS.XSize,PMGS.ZSize];
+        // Initialisation de Etat case
+        for (int i = 0; i < PMGS.XSize; i++)
+        {
+            for (int j = 0; j < PMGS.ZSize; j++)
+            {
+                this.EtatCase[i, j] = PMGS.EtatCase[i, j];
+            }
+        }
+
+        this.XSize = PMGS.XSize;
+        this.ZSize = PMGS.ZSize;
+        this.P1 = PMGS.P1;
+        this.P2 = PMGS.P2;
+        this.P1Killer = PMGS.P1Killer;
+        this.P2Killer = PMGS.P2Killer;
+        this.GumActive = PMGS.GumActive;
+        this.GumBall = PMGS.GumBall;
+        this.P1Winner = PMGS.P1Winner;
+        this.P2Winner = PMGS.P2Winner;
+        this.GameEnd = PMGS.GameEnd;
+
+    }
 
         // Ensemble des Setteurs pour Button
     // Set P1

@@ -7,6 +7,7 @@
 * 2 Joueurs s'affrontent sur une map choisi précédemment.
 * Celui qui touche la Gumball devient rouge et peut tuer son adversaire en le touchant
 * Au bout de 10 secondes la Gumball réaparait et le tueur redevient un simple Pacman
+* P pour la Pause
 
 # Choix joueurs
 * Human Azerty : ZQSD pour se déplacer
