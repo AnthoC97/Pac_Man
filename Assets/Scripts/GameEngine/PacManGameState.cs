@@ -197,6 +197,8 @@ public class PacManGameState{
             IntentManagement(action1, 0, Speed,p);
             IntentManagement(action2, 1, Speed,p);
         }
+        SearchContactWithGum(p);
+        SearchContactBetweenPlayer(p);
         return new bool[3] {p.P1Winner, p.P2Winner, p.GameEnd};
     }
 
@@ -284,9 +286,45 @@ public class PacManGameState{
         }
         return new Vector3(X,0.3f,Z);
     }
-
     public void RandomizeGumball()
     {
         this.GumBall = RandGumball();
+    }
+    
+    // Calcul de distance entre 2 points
+    private static float VectorDistance(Vector3 T1, Vector3 T2)
+    {
+        return Mathf.Sqrt( Mathf.Pow(T1.x - T2.x,2) + Mathf.Pow(T1.z - T2.z,2));
+    }
+    private static void SearchContactWithGum(PacManGameState p)
+    {
+        if (VectorDistance(p.P1, p.GumBall) <=
+            0.5f * 1.9f)
+        {
+            p.GumActive = false;
+            p.P1Killer = true;
+        }
+        else if (VectorDistance(p.P2, p.GumBall) <=
+                 0.5f * 1.9f)
+        {
+            p.GumActive = false;
+            p.P2Killer = true;
+        }
+    }
+    private static void SearchContactBetweenPlayer(PacManGameState p)
+    {
+        if (VectorDistance(p.P1, p.P2) <= 0.70)
+        {
+            if (p.P1Killer)
+            {
+                p.GameEnd = true;
+                p.P1Winner = true;
+            }
+            else if(p.P2Killer)
+            {
+                p.GameEnd = true;
+                p.P2Winner = true;
+            }
+        }
     }
 }
