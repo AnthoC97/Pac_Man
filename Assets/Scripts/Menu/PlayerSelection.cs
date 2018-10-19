@@ -4,19 +4,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerSelection : MonoBehaviour {
 	[Header("Nombre d'agents")]
 	[SerializeField] private int NbChoix;
 	
-	[Header("Player attribué")]
+	[Header("GameEngine")]
 	[SerializeField] private PacManGameEngineScript GameEngine;
-
+	
+	[Header("Player attribué")]
 	[SerializeField]private int IDPlayer = 1;
 
-	[Header("Texte Affiché")] [SerializeField]
-	private List<GameObject> ListText;
+	[Header("Texte Affiché")] 
+	[SerializeField]private List<GameObject> ListText;
 
+	[Header("Nombre d'itération")] 
+	[SerializeField] private Slider Slider;
+	[SerializeField] private Text NumberIterationView;
+
+	public void MakeNumberIterations()
+	{
+		NumberIterationView.text = Slider.value.ToString();
+		GameEngine.RandomRNbIteration = Slider.value;
+	}
 	private void CheckId(int IdAgent)
 	{
 		foreach (GameObject GO in ListText)
