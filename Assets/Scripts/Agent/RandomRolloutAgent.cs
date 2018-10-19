@@ -6,12 +6,12 @@ using UnityEngine;
 
 public class RandomRolloutAgent : IAgent
 {
-    private int RolloutCount;
-    private const int MaxIterations = 10;
+    private int RolloutIterations;
+    private const int ExplorationFrames = 10;
     private PacManGameState gsCopy;
 
     public RandomRolloutAgent(float rolloutCount, int xSize, int zSize) {
-        this.RolloutCount = (int) rolloutCount;
+        this.RolloutIterations = (int) rolloutCount;
         this.gsCopy = new PacManGameState(xSize, zSize);
     }
 
@@ -24,7 +24,7 @@ public class RandomRolloutAgent : IAgent
         foreach (var action in movementIntentValues) {
             int actionScore = 0;
 
-            for (var i = 0; i < RolloutCount; i++) {
+            for (var i = 0; i < RolloutIterations; i++) {
                 gsCopy.CopyGS(gs);
 
                 var randActionIndex = UnityEngine.Random.Range(0, movementIntentValues.Length);
@@ -32,7 +32,7 @@ public class RandomRolloutAgent : IAgent
 
                 var result = PacManGameState.Step(gsCopy, action, randAction, 4);
 
-                for (j = 0; !result[2] && j < MaxIterations; j++) { // While not terminal state
+                for (j = 0; !result[2] && j < ExplorationFrames; j++) { // While not terminal state
                     randActionIndex = UnityEngine.Random.Range(0, movementIntentValues.Length);
                     MovementIntent randAction1 = (MovementIntent) movementIntentValues.GetValue(randActionIndex);
                     randActionIndex = UnityEngine.Random.Range(0, movementIntentValues.Length);
