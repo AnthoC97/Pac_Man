@@ -6,12 +6,12 @@ using UnityEngine;
 
 public class RandomRolloutAgent : IAgent
 {
-    private int RolloutIterations;
-    private const int ExplorationFrames = 10;
+    private int RolloutIterations = 10;
+    private int ExplorationFrames;
     private PacManGameState gsCopy;
 
-    public RandomRolloutAgent(float rolloutCount, int xSize, int zSize) {
-        this.RolloutIterations = (int) rolloutCount;
+    public RandomRolloutAgent(float explorationFrames, int xSize, int zSize) {
+        this.ExplorationFrames = (int) explorationFrames;
         this.gsCopy = new PacManGameState(xSize, zSize);
     }
 
