@@ -116,7 +116,7 @@ public class DijkstraAgent : IAgent
         Grid grid = new Grid();
         grid.nodeRadius = 0.5f;
         grid.gridSizeX = gs.GetXSize();
-        grid.gridSizeZ = gs.GetZSise();
+        grid.gridSizeZ = gs.GetZSize();
 
         Node n = new Node();
 
