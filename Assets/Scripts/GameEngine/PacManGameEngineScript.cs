@@ -61,6 +61,10 @@ public class PacManGameEngineScript : MonoBehaviour
 
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKeyDown(KeyCode.P))
+		{
+			InGame = !InGame;
+		}
         if (!InGame)
         {
             return;
@@ -70,11 +74,6 @@ public class PacManGameEngineScript : MonoBehaviour
         gs = runner.GetState();
         PlayerOne.transform.position = gs.GetP1Vector();
         PlayerTwo.transform.position = gs.GetP2Vector();
-
-		if (Input.GetKeyDown(KeyCode.P))
-		{
-			InGame = !InGame;
-		}
 		// Test des booléen
 		if (gs.GetGumStatus() == false)
 		{
