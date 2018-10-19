@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\Agent\QLearningAgent.cs" />
     <Compile Include="Assets\Scripts\Agent\RandomAgent.cs" />
     <Compile Include="Assets\Scripts\Agent\RandomRolloutAgent.cs" />
+    <Compile Include="Assets\Scripts\DijkstraAgent.cs" />
     <Compile Include="Assets\Scripts\Enums.cs" />
     <Compile Include="Assets\Scripts\GameEngine\HumanPlayerScript.cs" />
     <Compile Include="Assets\Scripts\GameEngine\PacManGameEngineScript.cs" />

@@ -16,6 +16,7 @@ public enum Agents
     randomAgent = 0,
     randomRolloutAgent = 1,
     humanPlayerAgent = 2,
+    dijkstrAgent = 3,
 }
 public class Enums {
 
