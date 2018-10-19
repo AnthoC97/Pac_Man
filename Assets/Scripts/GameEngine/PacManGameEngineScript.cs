@@ -80,6 +80,11 @@ public class PacManGameEngineScript : MonoBehaviour
         gs = runner.GetState();
         PlayerOne.transform.position = gs.GetP1Vector();
         PlayerTwo.transform.position = gs.GetP2Vector();
+
+		if (Input.GetKeyDown(KeyCode.P))
+		{
+			InGame = !InGame;
+		}
 	    
 	    // Test contact entre sphère
 	    if (DistanceCount(PlayerOne.transform, PlayerTwo.transform) <= 0.70f)
