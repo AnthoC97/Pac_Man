@@ -78,7 +78,6 @@ public class PacManGameEngineScript : MonoBehaviour
 		// Test des booléen
 		if (gs.GetGumStatus() == false)
 		{
-			Debug.Log("hey");
 			Timetokill -= Time.deltaTime;
 			if (gs.GetP1Status() && GumBall.activeInHierarchy)
 			{
@@ -117,29 +116,6 @@ public class PacManGameEngineScript : MonoBehaviour
 			LoseOne.SetActive(true);
 			EndMenu.SetActive(true);
 		}
-	    // Test contact avec GumBall
-	    if (Vector3.Distance(PlayerOne.transform.position, GumBall.transform.position) <=
-	        0.5f * 1.9)
-	    {
-		    gs.SetGumStatus(false);
-		    GumBall.SetActive(false);
-		    gs.SetBoolP1(true);
-	        Timetokill = TimeKiller;
-		    gs.SetPositionGumball(-100,-100,-100);
-		    GumBall.transform.position = gs.GetGumVector();
-		    PlayerOne.GetComponent<Renderer>().material = MatKiller;
-	    }
-	    else if (Vector3.Distance(PlayerTwo.transform.position, GumBall.transform.position) <=
-	             0.5f * 1.9)
-	    {
-		    gs.SetGumStatus(false);
-		    GumBall.SetActive(false);
-	        gs.SetBoolP2(true);
-	        Timetokill = TimeKiller;
-		    gs.SetPositionGumball(-100,-100,-100);
-		    GumBall.transform.position = gs.GetGumVector();
-		    PlayerTwo.GetComponent<Renderer>().material = MatKiller;
-	    }	    
 		if (Timetokill <= 0)
 		{
 			Timetokill = 0.1f;
@@ -196,6 +172,7 @@ public class PacManGameEngineScript : MonoBehaviour
         gs = new PacManGameState(x, z, PlayerOne.transform.position, PlayerTwo.transform.position, Obstacles, Doors);
         runner = new PacManRunner(agentP1, agentP2, gs, speed);
         InGame = true;
+	    GumBall.transform.position = gs.GetGumVector();
     }
     private void LaunchGame(){}
 

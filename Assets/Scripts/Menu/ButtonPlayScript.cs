@@ -33,7 +33,6 @@ public class ButtonPlayScript : MonoBehaviour
 		P1Init = PMGES.gs.GetP1Vector();
 		P2Init = PMGES.gs.GetP2Vector();
 		PanelStart.SetActive(false);
-		PMGES.gs.RandomizeGumball();
 		PMGES.gs.SetGumStatus(true);
 	}
 
