@@ -78,6 +78,7 @@ public class PacManGameEngineScript : MonoBehaviour
 		// Test des booléen
 		if (gs.GetGumStatus() == false)
 		{
+			Debug.Log("hey");
 			Timetokill -= Time.deltaTime;
 			if (gs.GetP1Status() && GumBall.activeInHierarchy)
 			{
@@ -116,7 +117,6 @@ public class PacManGameEngineScript : MonoBehaviour
 			LoseOne.SetActive(true);
 			EndMenu.SetActive(true);
 		}
-		
 	    // Test contact avec GumBall
 	    if (Vector3.Distance(PlayerOne.transform.position, GumBall.transform.position) <=
 	        0.5f * 1.9)
@@ -139,8 +139,7 @@ public class PacManGameEngineScript : MonoBehaviour
 		    gs.SetPositionGumball(-100,-100,-100);
 		    GumBall.transform.position = gs.GetGumVector();
 		    PlayerTwo.GetComponent<Renderer>().material = MatKiller;
-	    }
-	    
+	    }	    
 		if (Timetokill <= 0)
 		{
 			Timetokill = 0.1f;
@@ -157,12 +156,6 @@ public class PacManGameEngineScript : MonoBehaviour
             //TODO Affichage du joueur/agent gagnant et perdant
         }
 	}
-    // Calcul de distance entre 2 points
-    private float DistanceCount(Transform T1, Transform T2)
-    {
-        return Mathf.Sqrt( Mathf.Pow(T1.position.x - T2.position.x,2) + Mathf.Pow(T1.position.z - T2.position.z,2));
-    }
-
     // Initialisation des agents, du runner et du GameState
     public void InitializeGame(int agent1, int agent2)
     {
