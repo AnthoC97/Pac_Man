@@ -338,20 +338,15 @@ public class PacManGameState{
         this.GumBall = RandGumball();
     }
 
-    // Calcul de distance entre 2 points
-    private static float VectorDistance(Vector3 T1, Vector3 T2)
-    {
-        return Mathf.Sqrt( Mathf.Pow(T1.x - T2.x,2) + Mathf.Pow(T1.z - T2.z,2));
-    }
     private static void SearchContactWithGum(PacManGameState p)
     {
-        if (VectorDistance(p.P1, p.GumBall) <=
+        if (Vector3.Distance(p.P1, p.GumBall) <=
             0.5f * 1.9f)
         {
             p.GumActive = false;
             p.P1Killer = true;
         }
-        else if (VectorDistance(p.P2, p.GumBall) <=
+        else if (Vector3.Distance(p.P2, p.GumBall) <=
                  0.5f * 1.9f)
         {
             p.GumActive = false;
@@ -360,7 +355,7 @@ public class PacManGameState{
     }
     private static void SearchContactBetweenPlayer(PacManGameState p)
     {
-        if (VectorDistance(p.P1, p.P2) <= 0.70f)
+        if (Vector3.Distance(p.P1, p.P2) <= 0.70f)
         {
             if (p.P1Killer)
             {

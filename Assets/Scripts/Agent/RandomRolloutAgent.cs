@@ -6,9 +6,11 @@ using UnityEngine;
 
 public class RandomRolloutAgent : IAgent
 {
+    private const int Speed = 4;
     private int RolloutIterations = 10;
     private int ExplorationFrames;
     private PacManGameState gsCopy;
+    private MovementIntent[] movementIntentValues = (MovementIntent[]) Enum.GetValues(typeof(MovementIntent));
 
     public RandomRolloutAgent(float explorationFrames, int xSize, int zSize) {
         this.ExplorationFrames = (int) explorationFrames;
@@ -19,7 +21,6 @@ public class RandomRolloutAgent : IAgent
         int bestActionScore = 0;
         int j;
         MovementIntent bestAction = 0;
-        var movementIntentValues = (MovementIntent[]) Enum.GetValues(typeof(MovementIntent));
 
         foreach (var action in movementIntentValues) {
             int actionScore = 0;
@@ -30,7 +31,7 @@ public class RandomRolloutAgent : IAgent
                 var randActionIndex = UnityEngine.Random.Range(0, movementIntentValues.Length);
                 MovementIntent randAction = (MovementIntent) movementIntentValues.GetValue(randActionIndex);
 
-                var result = PacManGameState.Step(gsCopy, action, randAction, 4);
+                var result = PacManGameState.Step(gsCopy, action, randAction, Speed);
 
                 for (j = 0; !result[2] && j < ExplorationFrames; j++) { // While not terminal state
                     randActionIndex = UnityEngine.Random.Range(0, movementIntentValues.Length);
@@ -38,7 +39,7 @@ public class RandomRolloutAgent : IAgent
                     randActionIndex = UnityEngine.Random.Range(0, movementIntentValues.Length);
                     MovementIntent randAction2 = (MovementIntent) movementIntentValues.GetValue(randActionIndex);
 
-                    result = PacManGameState.Step(gsCopy, randAction1, randAction2, 4);
+                    result = PacManGameState.Step(gsCopy, randAction1, randAction2, Speed);
                 }
 
                 actionScore += result[playerNumber] ? 1 : 0;
