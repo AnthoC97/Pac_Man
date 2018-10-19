@@ -16,7 +16,10 @@ public class PacManGameState{
     /**
      * Empty constructor for use with CopyGS method
      */
-    public PacManGameState() {
+    public PacManGameState(int xSize, int zSize) {
+        this.XSize = xSize;
+        this.ZSize = zSize;
+        this.EtatCase = new int[xSize, zSize];
     }
 
     //Constructeur
@@ -83,7 +86,6 @@ public class PacManGameState{
     // Methode Copie du GameState
     public void CopyGS(PacManGameState PMGS)
     {
-        this.EtatCase = new int[PMGS.XSize,PMGS.ZSize];
         // Initialisation de Etat case
         for (int i = 0; i < PMGS.XSize; i++)
         {
@@ -209,6 +211,14 @@ public class PacManGameState{
     public int[,] GetEtatCase()
     {
         return this.EtatCase;
+    }
+
+    public int GetXSize() {
+        return XSize;
+    }
+
+    public int GetZSize() {
+        return ZSize;
     }
 
     // Récupère Intent et Applique changement de position

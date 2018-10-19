@@ -36,7 +36,7 @@ public class PacManGameEngineScript : MonoBehaviour
     [SerializeField] private Material MatKiller;
     [SerializeField] public float TimeKiller;
     public float Timetokill;
-	
+
 	[Header("Affichage Victoire")]
 	[SerializeField] private GameObject WinOne;
 	[SerializeField] private GameObject WinTwo;
@@ -44,10 +44,10 @@ public class PacManGameEngineScript : MonoBehaviour
 	[Header("Affichage Défaite")]
 	[SerializeField] private GameObject LoseOne;
 	[SerializeField] private GameObject LoseTwo;
-	
+
 	[Header("Panel de fin")]
 	[SerializeField] private GameObject EndMenu;
-	
+
     [Header("Speed")]
     [SerializeField] private float WalkSpeed;
 
@@ -87,7 +87,7 @@ public class PacManGameEngineScript : MonoBehaviour
 		{
 			InGame = !InGame;
 		}
-	    
+
 	    // Test contact entre sphère
 	    if (DistanceCount(PlayerOne.transform, PlayerTwo.transform) <= 0.70f)
 	    {
@@ -152,7 +152,7 @@ public class PacManGameEngineScript : MonoBehaviour
 			PlayerOne.GetComponent<Renderer>().material = MatOne;
 			PlayerTwo.GetComponent<Renderer>().material = MatTwo;
 		}
-	    
+
         if (frameResult[2])//if state is terminal
         {
             InGame = false;
@@ -183,7 +183,7 @@ public class PacManGameEngineScript : MonoBehaviour
                 agentP1 = new RandomAgent();
                 break;
             case 3:
-                agentP1 = new RandomRolloutAgent(RandomRNbIteration);
+                agentP1 = new RandomRolloutAgent(RandomRNbIteration, x, z);
                 break;
         }
         switch (agent2)
@@ -200,7 +200,7 @@ public class PacManGameEngineScript : MonoBehaviour
                 agentP2 = new RandomAgent();
                 break;
             case 3:
-                agentP2 = new RandomRolloutAgent(RandomRNbIteration);
+                agentP2 = new RandomRolloutAgent(RandomRNbIteration, x, z);
                 break;
         }
         gs = new PacManGameState(x, z, PlayerOne.transform.position, PlayerTwo.transform.position, Obstacles, Doors);
