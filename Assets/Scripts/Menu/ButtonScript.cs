@@ -66,6 +66,18 @@ public class ButtonScript : MonoBehaviour
 		{
 			SceneManager.LoadScene(3);
 		}
+		else if(indLevel == 2)
+		{
+			SceneManager.LoadScene(4);
+		}
+		else if(indLevel == 3)
+		{
+			SceneManager.LoadScene(5);
+		}
+		else if(indLevel == 4)
+		{
+			SceneManager.LoadScene(6);
+		}
 	}
 
 	private void Update()
@@ -76,16 +88,16 @@ public class ButtonScript : MonoBehaviour
 			{
 				Next.SetActive(false);
 			}
-			ListDesign.position += new Vector3(0,0,13) * Time.deltaTime;
-			if (ListDesign.position.z >= 31.5f*indLevel)
+			ListDesign.position += new Vector3(0,0,20) * Time.deltaTime;
+			if (ListDesign.position.z >= 40.0f*indLevel)
 			{
 				Bnext = false;
 			}
 		}
 		else if (Bprev)
 		{
-			ListDesign.position -= new Vector3(0,0,10) * Time.deltaTime;
-			if (ListDesign.position.z <= 31.5f*indLevel)
+			ListDesign.position -= new Vector3(0,0,20) * Time.deltaTime;
+			if (ListDesign.position.z <= 40.0f*indLevel)
 			{
 				Bprev = false;
 			}
