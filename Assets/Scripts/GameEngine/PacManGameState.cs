@@ -313,7 +313,7 @@ public class PacManGameState{
     }
     private static void SearchContactBetweenPlayer(PacManGameState p)
     {
-        if (VectorDistance(p.P1, p.P2) <= 0.70)
+        if (VectorDistance(p.P1, p.P2) <= 0.70f)
         {
             if (p.P1Killer)
             {

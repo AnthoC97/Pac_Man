@@ -82,7 +82,7 @@ public class PacManGameEngineScript : MonoBehaviour
         PlayerTwo.transform.position = gs.GetP2Vector();
 	    
 	    // Test contact entre sphère
-	    if (DistanceCount(PlayerOne.transform, PlayerTwo.transform) <= PlayerTwo.transform.localScale.x)
+	    if (DistanceCount(PlayerOne.transform, PlayerTwo.transform) <= 0.70f)
 	    {
 	        if (gs.GetP1Status())
 	        {
