@@ -12,7 +12,7 @@ public class RandomRolloutAgent : IAgent
 
     public RandomRolloutAgent(float rolloutCount, int xSize, int zSize) {
         this.RolloutCount = (int) rolloutCount;
-        PacManGameState gsCopy = new PacManGameState(xSize, zSize);
+        this.gsCopy = new PacManGameState(xSize, zSize);
     }
 
     public MovementIntent Act(PacManGameState gs, int playerNumber) {
